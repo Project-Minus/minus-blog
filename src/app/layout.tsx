@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./reset.css";
+import ReactQueryProviders from "@/api/ReactQueryProvider";
 import styles from "../styles/layout.module.scss";
 
 const geistSans = localFont({
@@ -29,7 +30,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header className={styles.header}>123</header>
-        <div className={styles.wrapper}>{children}</div>
+        <ReactQueryProviders>
+          <div className={styles.wrapper}>{children}</div>
+        </ReactQueryProviders>
       </body>
     </html>
   );
