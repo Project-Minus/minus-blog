@@ -6,9 +6,40 @@
   row-gap: 15px;
   width: 30%;
   align-self: flex-start;
-  > div {
-    padding: 15px;
-    border: 1px solid #d9d9d9;
-    border-radius: 6px;
+}
+.asideList {
+  p {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .asideTitle {
+    margin-top: 30px;
+  }
+  .asideItem {
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      color: var(--foreground);
+    }
+  }
+  .asideBox {
+    border-left: 2px solid #999;
+    padding-left: 10px;
+  }
+}
+.asideSearch {
+  padding: 0;
+  width: 60%;
+  border-bottom: 1px solid #999;
+  input {
+    width: 100%;
+    padding: 15px 35px 15px 15px;
+    border: none;
+    background-color: var(--background);
+    font-size: 16px;
+    &:focus-visible {
+      outline: none;
+    }
   }
 }
