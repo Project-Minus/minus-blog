@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import ArticleList from "@/widgets/ArticleList";
+import MainList from "@/widgets/MainList";
 import FloatingAside from "@/widgets/FloatingAside";
 import styles from "./page.module.css";
 
@@ -8,7 +8,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <FloatingAside />
-        <ArticleList />
+        <MainList />
       </main>
     </div>
   );
