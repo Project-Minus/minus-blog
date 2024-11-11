@@ -29,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header className={styles.header}>123</header>
+        <header className={styles.header}>
+          <div>header</div>
+        </header>
         <ReactQueryProviders>
           <div className={styles.wrapper}>{children}</div>
         </ReactQueryProviders>

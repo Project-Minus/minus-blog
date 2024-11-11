@@ -1,0 +1,26 @@
+@use "./mixin.scss" as *;
+
+.articles {
+  width: 70%;
+}
+
+.articleItem {
+  width: 100%;
+  padding: 25px 0;
+}
+
+.articleTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+.articleDesc {
+  margin: 10px 0;
+  width: 100%;
+  font-size: 16px;
+  line-height: 2;
+  @include ellipsisMultiLine();
+  -webkit-line-clamp: 4;
+}
+.articleTime {
+  font-size: 14px;
+}
