@@ -1,7 +1,13 @@
 .aside {
   position: sticky;
   top: 120px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
   width: 30%;
-  border: 1px solid #d9d9d9;
   align-self: flex-start;
+  > div {
+    padding: 15px;
+    border: 1px solid #d9d9d9;
+  }
 }
