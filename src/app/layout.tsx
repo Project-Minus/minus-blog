@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./reset.css";
 import ReactQueryProviders from "@/api/ReactQueryProvider";
+import RecoilRootWrapper from "@/api/RecoilProvider";
 import styles from "../styles/layout.module.scss";
 
 const geistSans = localFont({
@@ -32,9 +33,11 @@ export default function RootLayout({
         <header className={styles.header}>
           <div>header</div>
         </header>
-        <ReactQueryProviders>
-          <div className={styles.wrapper}>{children}</div>
-        </ReactQueryProviders>
+        <RecoilRootWrapper>
+          <ReactQueryProviders>
+            <div className={styles.wrapper}>{children}</div>
+          </ReactQueryProviders>
+        </RecoilRootWrapper>
       </body>
     </html>
   );
