@@ -10,6 +10,7 @@ export interface Category {
   name: string;
   description: string;
   created_at: Date;
+  sub_category: Array<string>;
 }
 
 export interface User {

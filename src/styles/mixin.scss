@@ -1,0 +1,388 @@
+@mixin pageHeight() {
+  //page 내부 height( header)
+  min-height: calc(100vh - 52px);
+}
+
+@mixin iconBox($marginRight) {
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: $marginRight;
+  }
+}
+
+@mixin ellipsisSingleLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin ellipsisMultiLine {
+  //width 값은 해당 로직에서 작성
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // 라인 수
+  -webkit-box-orient: vertical;
+}
+
+// --- z index
+
+@mixin sidebarZIndex() {
+  z-index: 1000;
+}
+
+@mixin sidebarOpenWrapperZIndex($isActive) {
+  z-index: 1000;
+  @if $isActive {
+    z-index: 1001;
+  }
+}
+
+@mixin fovOpenButtonZIndex() {
+  z-index: 10;
+}
+@mixin speechBubbleZIndex {
+  z-index: 1049;
+}
+@mixin modalZIndex {
+  z-index: 1050;
+}
+
+@mixin loadingZIndex {
+  z-index: 10000000;
+}
+@mixin toastZIndex {
+  z-index: 1100;
+}
+@mixin cardNavZIndex {
+  z-index: 100;
+}
+@mixin productCardImageZIndex {
+  z-index: 1;
+}
+@mixin productCardBadgeZIndex {
+  z-index: 2;
+}
+@mixin defaultHeaderZIndex {
+  z-index: 1000;
+}
+@mixin productDetailModalZIndex {
+  z-index: 10;
+}
+
+@mixin deviceSpecPageZIndex {
+  z-index: 1;
+}
+
+@mixin deviceSpecTapsZIndex {
+  z-index: 1;
+}
+
+@mixin deviceTitleZIndex {
+  z-index: 1;
+}
+
+@mixin accessoryZoomImageZIndex {
+  z-index: 1;
+}
+
+@mixin accessoryBackgroundZIndex {
+  z-index: -1;
+}
+
+@mixin accessoryPopOverZIndex {
+  z-index: 1;
+}
+
+@mixin fovTitleZIndex {
+  z-index: 1;
+}
+
+@mixin modalBackgroundZIndex {
+  z-index: 1001;
+}
+
+@mixin listTableHighlightLineZIndex {
+  z-index: 1;
+}
+
+@mixin googleAutoCompleteZIndex {
+  z-index: 1051;
+}
+@mixin imageMapZIndex {
+  z-index: 1000;
+}
+
+// ---
+
+@mixin scrollbar {
+  & {
+    margin-right: 10px;
+    overflow-y: auto;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(116, 126, 135, 1);
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background-color: rgba(157, 165, 171, 1);
+  }
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 50px;
+    background-color: rgba(161, 161, 161, 1);
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+    &:vertical:start:decrement {
+      display: block;
+      height: 10px;
+    }
+    &:vertical:start:increment {
+      display: block;
+      height: 10px;
+    }
+    &:vertical:end:decrement {
+      display: block;
+      height: 10px;
+    }
+  }
+}
+
+@mixin scrollbarX {
+  & {
+    overflow-x: auto;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(116, 126, 135, 1);
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background-color: rgba(157, 165, 171, 1);
+  }
+  &::-webkit-scrollbar {
+    width: 110px;
+    height: 14px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 50px;
+    border: 5px solid rgba(255, 255, 255, 1);
+    background-color: rgba(161, 161, 161, 1);
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+    &:vertical:start:decrement {
+      display: block;
+      width: 10px;
+    }
+    &:vertical:start:increment {
+      display: block;
+      width: 10px;
+    }
+    &:vertical:end:decrement {
+      display: block;
+      width: 10px;
+    }
+  }
+}
+
+@mixin commonModal {
+  //FiXME: 모달 공통 분리 / 추가적으로 추가할 내용 있는지 확인
+  & {
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include modalZIndex();
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    height: 100vh;
+  }
+  &__container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 12px;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 22.5px 24px 14.5px;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid rgba(226, 232, 236, 1);
+    > p {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 1);
+    }
+    svg {
+      scale: 1.3;
+    }
+  }
+  &__input {
+    width: 100%;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(226, 232, 236, 1);
+    color: black;
+    &:focus {
+      outline: 1px solid rgba(0, 0, 0, 0.35);
+    }
+    &:disabled {
+      background-color: rgba(238, 241, 242, 1);
+    }
+  }
+  &__confirm {
+    margin-left: auto;
+    margin-top: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+  }
+}
+
+@mixin cardHover {
+  & {
+    transition: box-shadow 0.25s;
+  }
+  &:hover {
+    outline: 2px solid rgba(136, 145, 153, 1);
+    box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.16);
+  }
+}
+@mixin cardSelect {
+  &:hover {
+    outline: 2px solid rgba(136, 145, 153, 1);
+  }
+}
+@mixin productColor($color) {
+  @if $color == "deepRed" {
+    background-color: rgba(179, 35, 35, 1);
+  } @else if $color == "red" {
+    background-color: rgba(255, 21, 0, 1);
+  } @else if $color == "orange" {
+    background-color: rgba(255, 151, 4, 1);
+  } @else if $color == "lime" {
+    background-color: rgba(195, 235, 0, 1);
+  } @else if $color == "green" {
+    background-color: rgba(125, 197, 25, 1);
+  } @else if $color == "brightGreen" {
+    background-color: rgba(62, 221, 83, 1);
+  } @else if $color == "emeraldGreen" {
+    background-color: rgba(10, 164, 90, 1);
+  } @else if $color == "turquiose" {
+    background-color: rgba(2, 152, 178, 1);
+  } @else if $color == "vividBlue" {
+    background-color: rgba(23, 186, 255, 1);
+  } @else if $color == "blue" {
+    background-color: rgba(0, 128, 255, 1);
+  } @else if $color == "deepBlue" {
+    background-color: rgba(67, 40, 242, 1);
+  } @else if $color == "purple" {
+    background-color: rgba(133, 28, 251, 1);
+  } @else if $color == "violet" {
+    background-color: rgba(184, 0, 184, 1);
+  } @else if $color == "lightPurple" {
+    background-color: rgba(194, 163, 255, 1);
+  } @else if $color == "pink" {
+    background-color: rgba(255, 122, 246, 1);
+  } @else {
+    background-color: rgba(255, 151, 4, 1);
+  }
+}
+
+@mixin preventSelect {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  -moz-user-select: none;
+  user-select: none; /* Standard syntax */
+}
+
+@mixin allowSelect {
+  -webkit-user-select: text; /* Safari */
+  -ms-user-select: text; /* IE 10 and IE 11 */
+  -moz-user-select: text;
+  user-select: text; /* Standard syntax */
+}
+
+@mixin button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@mixin verticalScrollbar {
+  // 수직 스크롤바 너비
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  // 스크롤바 핸들 스타일
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(177, 184, 188, 1);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(116, 126, 135, 1);
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+    &:vertical:start:increment {
+      display: block;
+      height: 5px;
+    }
+    &:vertical:end:decrement {
+      display: block;
+      height: 5px;
+    }
+  }
+}
+
+@mixin paid_tag {
+  &__tag--Free,
+  &__tag--Paid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 16px;
+    padding: 1px 10px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(116, 126, 135, 1);
+    text-align: center;
+  }
+  &__tag--Free {
+    background-color: rgba(226, 232, 236, 1);
+  }
+  &__tag--Paid {
+    color: rgba(243, 115, 33, 1);
+    background-color: rgba(255, 239, 224, 1);
+  }
+}

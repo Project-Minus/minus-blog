@@ -1,0 +1,40 @@
+@use "./mixin.scss" as *;
+
+.mainBox {
+  width: 70%;
+  > h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  > p {
+    line-height: 1.6;
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+}
+
+.mainItem {
+  width: 100%;
+  padding: 25px 0;
+  border-bottom: 1px solid #d9d9d9;
+  &:first-of-type {
+    padding: 0 0 25px;
+  }
+}
+
+.mainTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+.mainDesc {
+  margin: 10px 0;
+  width: 100%;
+  font-size: 16px;
+  line-height: 2;
+  @include ellipsisMultiLine();
+  -webkit-line-clamp: 4;
+}
+.mainTime {
+  font-size: 14px;
+}
