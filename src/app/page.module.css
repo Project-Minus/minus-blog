@@ -1,3 +1,4 @@
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -22,7 +23,18 @@
     height: 100%;
   }
 }
-
+.pageTitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5% 0;
+  height: calc(100vh - 70px);
+  > h1{
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+  }
+}
 .main {
   max-width: 1200px;
   min-height: 100%;
@@ -161,4 +173,57 @@ a.secondary {
   .logo {
     filter: invert();
   }
+}
+
+.number {
+  font-size: 30px;
+  position: relative;
+  animation: rotate 2s infinite ease-in-out
+}
+
+
+span:nth-child(1) {
+  position: absolute;
+  font-weight: bold;
+  filter: blur(10rem);
+  color: #0067ff;
+}
+
+span:nth-child(2) {
+  position: absolute;
+  font-weight: bold;
+  filter: blur(1.3rem);
+  background: -webkit-linear-gradient(85deg, #084d92 20%, #76d8fe 21%, #149dcc, #76d8fe 31%, #084d92 33%, #084d92 50%, #76d8fe 52%, #149dcc, #76d8fe 72%, #084d92 72%, #76d8fe);;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+span:nth-child(3) {
+  position: absolute;
+  font-weight: 700;
+  filter: blur(0.3rem);
+  color: rgba(black, 0.4);
+}
+
+span:nth-child(4) {
+  position: absolute;
+  font-weight: 700;
+  background: -webkit-linear-gradient(85deg, #084d92 20%, #76d8fe 21%, #149dcc, #76d8fe 31%, #084d92 33%, #084d92 50%, #76d8fe 52%, #149dcc, #76d8fe 72%, #084d92 72%, #76d8fe);;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+span:nth-child(5) {
+  position: absolute;
+  color: black;
+  filter: blur(1px);
+  text-shadow: 0.3rem 0.3rem rgba(black, 0.7);
+}
+
+
+span:nth-child(6) {
+  position: relative;
+  background: -webkit-linear-gradient(#76d8fe, #084d92);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

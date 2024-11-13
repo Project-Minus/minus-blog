@@ -14,17 +14,14 @@ export default function ArticleList() {
       {articleData?.map((item, index) => {
         const key = `${item.title}-${index}`;
         return (
-          <Link key={key} href={`/category/${item.id}`}>
-            <div className={styles.mainItem}>
+          <Link
+            className={styles.mainLink}
+            key={key}
+            href={`/category/${item.id}`}
+          >
+            <div>
               <p className={styles.mainTitle}>{item.title}</p>
               <p className={styles.mainDesc}>
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
                 {item.description}
                 {item.description}
                 {item.description}
