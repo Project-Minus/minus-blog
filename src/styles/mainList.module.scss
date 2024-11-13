@@ -1,7 +1,7 @@
 @use "./mixin.scss" as *;
 
 .mainBox {
-  width: 70%;
+  width: 80%;
   > h1 {
     font-size: 32px;
     font-weight: bold;
@@ -18,9 +18,6 @@
   width: 100%;
   padding: 25px 0;
   border-bottom: 1px solid #d9d9d9;
-  &:first-of-type {
-    padding: 0 0 25px;
-  }
 }
 
 .mainTitle {
