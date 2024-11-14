@@ -9,18 +9,18 @@
 }
 
 .mainTitle {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: bold;
 }
 .mainDesc {
   margin: 10px 0;
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 2;
   color: var(--opacityFore7);
   @include ellipsisMultiLine();
   -webkit-line-clamp: 4;
 }
 .mainTime {
-  font-size: 14px;
+  font-size: 12px;
 }

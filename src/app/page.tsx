@@ -1,25 +1,20 @@
 // import Image from "next/image";
 import MainList from "@/widgets/MainList";
 import FloatingAside from "@/widgets/FloatingAside";
+import { Aldrich } from "next/font/google";
 import styles from "./page.module.css";
 import Slider from "../components/Slider";
+import TypingModal from "../components/TypingModal";
+
+const headerFont = Aldrich({ subsets: ["latin"], weight: ["400"] });
 
 export default function Home() {
-  const message = '"Make the code concise"';
+  const message = "Make the code concise";
   return (
     <div className={styles.page}>
       <div className={styles.pageTitle}>
-        <h1>{message}</h1>
-        <h2>
-          welcome to Minus!
-          <br />
-          We develop using React and TypeScript.
-          <br />
-          We enjoy adopting new technologies and strive for continuous
-          improvement.
-          <br />
-          Welcome! We hope you enjoy your time reading our posts.
-        </h2>
+        <h1 className={headerFont.className}>{message}</h1>
+        <TypingModal />
         <Slider />
       </div>
       <main className={styles.main}>
