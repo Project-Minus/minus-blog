@@ -4,45 +4,78 @@
   display: flex;
   flex-direction: column;
   width: 20%;
+  min-width: 200px;
   align-self: flex-start;
 }
+
 .asideList {
+  padding: 0 15px;
   p {
     margin-bottom: 10px;
     font-size: 18px;
   }
-  .asideTitle {
-    margin-top: 20px;
-  }
+
   .asideItem {
     color: #999;
     font-size: 14px;
     cursor: pointer;
-    &:hover {
-      color: var(--foreground);
-      .asideBox {
-        border-left: 3px solid var(--opacityFore7);
+    &:has(.asideTitle) {
+      margin-bottom: 15px;
+      &:last-of-type {
+        margin-bottom: 0;
       }
+    }
+    &:hover {
+      color: #ffffff;
     }
   }
   .asideBox {
-    border-left: 3px solid var(--opacityFore3);
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding-left: 10px;
+    .asideItem {
+      border-right: 2px solid transparent;
+      padding-right: 5px;
+      &:hover {
+        animation: cursor-persist 1s linear infinite;
+      }
+    }
   }
 }
 .asideSearch {
-  padding: 0;
-  width: 60%;
-  border-bottom: 1px solid #999;
+  padding: 10px 15px;
+  width: 100%;
   input {
     width: 100%;
-    padding: 5px 35px 5px 0px;
     border: none;
-    background-color: var(--background);
+    background-color: transparent;
     font-size: 16px;
     &:focus-visible {
       outline: none;
     }
+  }
+}
+
+@keyframes cursor-persist {
+  from,
+  45% {
+    border-color: #ffffff;
+  }
+  50%,
+  to {
+    border-color: transparent;
+  }
+}
+@keyframes cursor {
+  from,
+  to,
+  20%,
+  80% {
+    border-color: transparent;
+  }
+  25%,
+  75% {
+    border-color: white;
   }
 }
