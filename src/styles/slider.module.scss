@@ -2,7 +2,7 @@
   --color-text: var(--background);
   --color-bg: var(--opacityFore7);
   --color-bg-accent: var(--opacityFore7);
-  --size: clamp(10rem, 1rem + 40vmin, 30rem);
+  --size: clamp(4rem, 1rem + 20vmin, 13rem);
   --gap: calc(var(--size) / 14);
   --duration: 60s;
   --scroll-start: 0;
@@ -24,13 +24,16 @@
   overflow: hidden;
   user-select: none;
   gap: var(--gap);
-  mask-image: linear-gradient(
-    var(--mask-direction, to right),
-    hsl(0 0% 0% / 0),
-    hsl(0 0% 0% / 1) 20%,
-    hsl(0 0% 0% / 1) 80%,
-    hsl(0 0% 0% / 0)
-  );
+  // mask-image: linear-gradient(
+  //   var(--mask-direction, to right),
+  //   hsl(0 0% 0% / 0),
+  //   hsl(0 0% 0% / 1) 0%,
+  //   hsl(0 0% 0% / 1) 0%,
+  //   hsl(0 0% 0% / 0)
+  // );
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
+  mask-size: 150% 150%;
+  mask-position: center;
 }
 
 .marquee__group {

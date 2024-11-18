@@ -3,8 +3,8 @@
   top: 120px;
   display: flex;
   flex-direction: column;
-  width: 20%;
-  min-width: 200px;
+  width: 15%;
+  min-width: 150px;
   align-self: flex-start;
 }
 
@@ -12,7 +12,7 @@
   padding: 0 15px;
   p {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .asideItem {
@@ -33,10 +33,17 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 10px;
     .asideItem {
       border-right: 2px solid transparent;
       padding-right: 5px;
+      &::before {
+        content: "├";
+      }
+      &:last-of-type {
+        &::before {
+          content: "└";
+        }
+      }
       &:hover {
         animation: cursor-persist 1s linear infinite;
       }
@@ -50,7 +57,7 @@
     width: 100%;
     border: none;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 14px;
     &:focus-visible {
       outline: none;
     }
