@@ -29,7 +29,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${pretendard.variable}`}>
         <header className={styles.header}>
-          <Image src={logo} alt="" />
+          <div>
+            <Image src={logo} alt="" />
+          </div>
         </header>
         <RecoilRootWrapper>
           <ReactQueryProviders>

@@ -1,7 +1,7 @@
 :root {
-  --color-text: var(--background);
-  --color-bg: var(--opacityFore7);
-  --color-bg-accent: var(--opacityFore7);
+  --color-text: var(--foreground);
+  --color-bg: transparent;
+  --color-bg-accent: transparent;
   --size: clamp(4rem, 1rem + 20vmin, 13rem);
   --gap: calc(var(--size) / 14);
   --duration: 60s;
@@ -11,9 +11,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text: var(--background);
-    --color-bg: var(--opacityFore3);
-    --color-bg-accent: var(--opacityFore3);
+    --color-text: var(--foreground);
+    --color-bg: transparent;
+    --color-bg-accent: transparent;
   }
 }
 .sliderWrapper {
@@ -31,9 +31,9 @@
   //   hsl(0 0% 0% / 1) 0%,
   //   hsl(0 0% 0% / 0)
   // );
-  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
-  mask-size: 150% 150%;
-  mask-position: center;
+  // mask-image: radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
+  // mask-size: 150% 150%;
+  // mask-position: center;
 }
 
 .marquee__group {
@@ -142,7 +142,7 @@
 }
 
 .toggle:focus-visible {
-  box-shadow: 0 0 0 2px var(--color-text);
+  // box-shadow: 0 0 0 2px var(--color-text);
 }
 
 .toggle span {
