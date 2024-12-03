@@ -2,10 +2,18 @@
 
 import { usePathname } from "next/navigation";
 
-export default function ListTitle() {
+interface Props {
+  text: string;
+}
+
+export default function ListTitle({ text }: Props) {
   const pathname = usePathname();
 
   if (pathname === "/") {
-    return <></>;
+    return (
+      <div>
+        <p>{text}</p>
+      </div>
+    );
   }
 }

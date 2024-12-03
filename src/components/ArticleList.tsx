@@ -21,25 +21,7 @@ export default function ArticleList() {
           >
             <div>
               <p className={styles.mainTitle}>{item.title}</p>
-              <p className={styles.mainDesc}>
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-                {item.description}
-              </p>
+              <p className={styles.mainDesc}>{item.description}</p>
               <p className={styles.mainTime}>{convertTime(item.created_at)}</p>
             </div>
           </Link>
