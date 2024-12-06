@@ -18,7 +18,7 @@ export const useGetTableById = <T extends Database>(
 ) => {
   const { data: tableData }: UseQueryResult<{ data: Array<T> }, Error> =
     useQuery({
-      queryKey: ["table", tableName],
+      queryKey: ["table", tableName, id],
       queryFn: () => filterEqualTable(tableName, "id", id).catch(console.error),
     });
 

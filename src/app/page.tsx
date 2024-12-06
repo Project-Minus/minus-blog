@@ -2,6 +2,7 @@
 import MainList from "@/widgets/MainList";
 import FloatingAside from "@/widgets/FloatingAside";
 import { Aldrich } from "next/font/google";
+import ListTitle from "@/components/ListTitle";
 import styles from "./page.module.css";
 import Slider from "../components/Slider";
 import TypingModal from "../components/TypingModal";
@@ -16,6 +17,10 @@ export default function Home() {
         <h1 className={headerFont.className}>{message}</h1>
         <TypingModal />
         <Slider />
+      </div>
+      <div>
+        <ListTitle text="Favorites" />
+        <div>Save your favorite articles!</div>
       </div>
       <main className={styles.main}>
         <FloatingAside />

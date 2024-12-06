@@ -1,0 +1,16 @@
+.category {
+  .title {
+    margin: 20px 0px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+  }
+  .infos {
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    padding: 12px;
+  }
+}

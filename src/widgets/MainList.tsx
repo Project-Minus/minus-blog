@@ -5,7 +5,7 @@ import styles from "../styles/mainList.module.scss";
 export default function MainList() {
   return (
     <div className={styles.mainBox}>
-      <ListTitle />
+      <ListTitle text="Recommended Article" />
       <ArticleList />
     </div>
   );
