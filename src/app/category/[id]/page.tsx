@@ -17,6 +17,7 @@ export default function Category() {
   const { data } = useGetTableById<Article>("article", params.id as string);
 
   const transform: HTMLReactParserOptions["replace"] = (domNode) => {
+    // code 태그 사용시에 render될 컴포넌트
     if (domNode.type === "tag" && (domNode as Element).name === "code") {
       const element = domNode.childNodes as Array<DOMNode>;
       return (
