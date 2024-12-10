@@ -22,5 +22,7 @@ export const useGetTableById = <T extends Database>(
       queryFn: () => filterEqualTable(tableName, "id", id).catch(console.error),
     });
 
-  return { data: tableData ? tableData.data : [] };
+  return {
+    data: tableData ? tableData.data?.[0] : { title: "", description: "" },
+  };
 };
