@@ -117,10 +117,6 @@
 // ---
 
 @mixin scrollbar {
-  & {
-    margin-right: 10px;
-    overflow-y: auto;
-  }
   &::-webkit-scrollbar-thumb:hover {
     background-color: rgba(116, 126, 135, 1);
   }
