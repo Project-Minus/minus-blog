@@ -95,7 +95,7 @@ export default function Category() {
   };
 
   return (
-    <div className={styles.category} suppressHydrationWarning>
+    <div className={styles.category}>
       <ScrollSpy scrollList={scrollSpy.current} />
       <div className={styles.title}>{data?.title}</div>
       <div className={styles.infos}>
