@@ -22,6 +22,7 @@ export default function Category() {
     [],
   );
 
+
   const transform: HTMLReactParserOptions["replace"] = (domNode, index) => {
     if (domNode.type === "tag" && (domNode as Element).name === "code") {
       const element = domNode.childNodes as Array<DOMNode>;
