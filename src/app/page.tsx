@@ -26,7 +26,7 @@ export default async function Home() {
     staleTime: 60 * 1000, // 바로 stale 상태로 변경되는 것을 방지하기 위해 30초로 설정
   });
   const dehydratedState = dehydrate(queryClient);
-  console.log(dehydratedState);
+
   return (
     <HydrationBoundary state={dehydratedState}>
       <div className={styles.page}>
