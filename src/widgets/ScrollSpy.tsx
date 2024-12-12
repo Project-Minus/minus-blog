@@ -32,10 +32,9 @@ export default function ScrollSpy(props: Props) {
   return (
     <div className={styles.scroll_spy}>
       {scrollList?.map(({ id, tag, text }) => {
-        const hTag = document.getElementById(`${id}`);
-        console.log(hTag?.scrollWidth);
         return (
           <div
+            className={styles.scroll_tags}
             style={{
               marginLeft: leftGap(tag),
             }}
