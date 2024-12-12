@@ -10,7 +10,7 @@ import parse, {
   HTMLReactParserOptions,
   DOMNode,
 } from "html-react-parser";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { convertPContent } from "@/utils/convertTag";
 import styles from "../../../styles/category.module.scss";
 import ReactCodeBlock from "../../../components/ReactCodeBlock";
@@ -25,6 +25,14 @@ export default function Category() {
     [],
   );
   const favoriteClass = isFavorite ? styles.favorite : styles.unFavorite;
+
+  useEffect(() => {
+    const getList = window.localStorage.getItem("favorite");
+    const favoriteList = getList ? JSON.parse(getList) : [];
+    if (favoriteList.includes(articleId)) {
+      setIsFavorite(true);
+    }
+  }, [articleId]);
 
   const handleClickFavorite = () => {
     const favorites = window.localStorage.getItem("favorite");
