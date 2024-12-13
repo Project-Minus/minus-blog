@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import dayjs from "dayjs";
 
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY as string;
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
@@ -7,8 +8,15 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const getAllTable = async (tableName: string) => {
   const { data, error } = await supabase.from(tableName).select("*");
+  const tableData = data || [];
+  const sortData = [...tableData].sort((a, b) => {
+    const createdAtA = dayjs(a.created_at);
+    const createdAtB = dayjs(b.created_at);
 
-  return { data, error };
+    return createdAtB.diff(createdAtA);
+  });
+
+  return { data: sortData, error };
 };
 
 export const getPaginatedTable = async (

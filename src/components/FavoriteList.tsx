@@ -18,7 +18,7 @@ export default function FavoriteList() {
 
   return (
     <div>
-      <div>Save your favorite articles!</div>
+      {!articleData?.length && <div>Save your favorite articles!</div>}
       {articleData.map((article, index) => {
         const key = `${article.title}-${article.created_at}-${index}`;
         return <Card key={key} article={article} />;
