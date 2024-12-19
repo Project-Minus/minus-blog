@@ -9,6 +9,7 @@ import styles from "../styles/mainList.module.scss";
 export default function ArticleList() {
   const { data } = useGetTable<Article>("article");
   const articleData = data ? (data as Array<Article>) : [];
+
   return (
     <>
       {articleData?.map((item, index) => {

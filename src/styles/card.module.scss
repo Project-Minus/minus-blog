@@ -1,0 +1,24 @@
+@use "../styles/mixin.scss" as *;
+
+.card {
+  width: 30%;
+  border-radius: 8px;
+  overflow: hidden;
+  .title {
+    text-align: center;
+    @include ellipsisSingleLine();
+  }
+  .desc {
+    @include ellipsisMultiLine();
+    -webkit-line-clamp: 4;
+  }
+  .date {
+    text-align: right;
+  }
+  img {
+    width: 100%;
+    height: 80px;
+    filter: invert(45%) sepia(93%) saturate(178%);
+    background-color: white;
+  }
+}

@@ -19,9 +19,10 @@ export default function FloatingAside() {
               <div className={styles.asideItem} key={key}>
                 <p className={styles.asideTitle}>{` ${aside.name} `}</p>
                 <div className={styles.asideBox}>
-                  {aside.sub_category?.map((subCategory) => {
+                  {aside.sub_category?.map((subCategory, subIndex) => {
+                    const subKey = `${key}-${subIndex}`;
                     return (
-                      <p className={styles.asideItem} key={key}>
+                      <p className={styles.asideItem} key={subKey}>
                         {` ${subCategory} `}
                       </p>
                     );

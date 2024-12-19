@@ -4,9 +4,8 @@ import "./globals.css";
 import "./reset.css";
 import ReactQueryProviders from "@/api/ReactQueryProvider";
 import RecoilRootWrapper from "@/api/RecoilProvider";
-import Image from "next/image";
 import styles from "../styles/layout.module.scss";
-import logo from "../../public/minus.png";
+import AppHeader from "./components/AppHeader";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -28,11 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pretendard.variable}`}>
-        <header className={styles.header}>
-          <div>
-            <Image src={logo} alt="" />
-          </div>
-        </header>
+        <AppHeader />
         <RecoilRootWrapper>
           <ReactQueryProviders>
             <div className={styles.wrapper}>{children}</div>

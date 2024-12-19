@@ -4,18 +4,49 @@
   .scroll_spy {
     position: fixed;
     top: 130px;
-    right: 10%;
+    right: calc(50% - 500px);
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-left: 1px solid var(--opacityFore7);
+    border-left: 3px solid var(--opacityFore7);
     padding: 0px 15px;
+  }
+  .scroll_tags {
+    display: flex;
+    font-weight: 700;
+    transition: all 0.5s;
+    &:hover {
+      font-weight: 900;
+      color: var(--pointColor);
+    }
   }
   .title {
     margin: 20px 0px;
+    padding: 20px 0px;
     text-align: center;
-    font-size: 40px;
+    font-size: 48px;
     font-weight: bold;
+  }
+  .favorite {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 25px;
+    border: 3px solid var(--pointColor);
+    border-radius: 30px;
+    background-color: var(--pointColor);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .unFavorite {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 25px;
+    border: 3px solid var(--pointColor);
+    color: var(--pointColor);
+    border-radius: 30px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.25s;
   }
   .infos {
     .info {
@@ -84,16 +115,16 @@
       padding: 3rem 2rem;
       background-color: rgba(28, 28, 28, 1);
 
-      border-radius: 0 10px 10px 0;
+      border-radius: 0 6px 6px 0;
       &::before {
         position: absolute;
         top: 0;
         left: 0;
         content: "";
         display: inline-block;
-        width: 2%;
+        width: 1.5%;
         height: 100%;
-        border-radius: 10px 0 0 10px;
+        border-radius: 6px 0 0 6px;
         background-color: var(--opacityPoint7);
       }
     }
