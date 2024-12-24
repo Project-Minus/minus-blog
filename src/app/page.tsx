@@ -31,7 +31,9 @@ export default async function Home() {
     <HydrationBoundary state={dehydratedState}>
       <div className={styles.page}>
         <div className={styles.pageTitle}>
-          <h1 className={headerFont.className}>{message}</h1>
+          <h1 className={`${headerFont.className} ${styles.titleMessage}`}>
+            {message}
+          </h1>
           <TypingModal />
           <Slider />
         </div>
