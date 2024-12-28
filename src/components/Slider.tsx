@@ -1,4 +1,5 @@
 import styles from "../styles/slider.module.scss";
+import "../styles/slider.css";
 
 export default function Slider() {
   return (

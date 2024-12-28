@@ -9,9 +9,11 @@ export default function FavoriteList() {
   const [favorites, setFavorites] = useState<Array<string>>([]);
 
   useEffect(() => {
-    const getList = window.localStorage.getItem("favorite");
-    const favoriteList = getList ? JSON.parse(getList) : [];
-    setFavorites(favoriteList);
+    if (typeof window !== "undefined") {
+      const getList = window.localStorage.getItem("favorite");
+      const favoriteList = getList ? JSON.parse(getList) : [];
+      setFavorites(favoriteList);
+    }
   }, []);
   const { data } = useFilterContainTable<Article>("article", "id", favorites);
   const articleData = data || [];

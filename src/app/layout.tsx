@@ -6,6 +6,7 @@ import ReactQueryProviders from "@/api/ReactQueryProvider";
 import RecoilRootWrapper from "@/api/RecoilProvider";
 import styles from "../styles/layout.module.scss";
 import AppHeader from "./components/AppHeader";
+import "../styles/globals.css";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",

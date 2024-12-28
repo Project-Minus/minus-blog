@@ -1,33 +1,3 @@
-:root {
-  --background: rgba(237, 237, 237, 1);
-  --foreground: rgba(32, 32, 32, 1);
-  --opacityFore3: rgba(32,32,32, 0.3);
-  --opacityFore7: rgba(32,32,32, 0.7);
-  --pointColor:rgba(18,184,134, 1);
-  --opacityPoint3:rgba(18, 184, 134, 0.3);
-  --opacityPoint7: rgba(18, 184, 134, 0.7);
-  --subColor:rgba(255, 85, 85, 1);
-  --opacitySub3: rgba(255, 85, 85, 0.3);
-  --opacitySub7: rgba(255, 85, 85, 0.7);
-  --gray: #999;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-      --background: rgba(32, 32, 32, 1);
-      --foreground: rgba(237, 237, 237, 1);;
-      --opacityFore3: rgba(237, 237, 237, 0.3);
-      --opacityFore7: rgba(237, 237, 237, 0.7);
-      --pointColor: rgba(18, 184, 134, 1);
-      --opacityPoint3: rgba(18, 184, 134, 0.3);
-      --opacityPoint7: rgba(18, 184, 134, 0.7);
-      --subColor: rgba(255, 85, 85, 1);
-      --opacitySub3: rgba(255, 85, 85, 0.3);
-      --opacitySub7: rgba(255, 85, 85, 0.7);
-      --gray: #999;
-    }
-}
-
 
 html,
 body {

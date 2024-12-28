@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../styles/category.module.scss";
+import styles from "../../../styles/category.module.scss";
 
 interface Props {
   scrollList: Array<{ id: string; tag: string; text: string }>;

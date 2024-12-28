@@ -1,0 +1,18 @@
+:root {
+    --color-text: var(--foreground);
+    --color-bg: transparent;
+    --color-bg-accent: transparent;
+    --size: clamp(4rem, 1rem + 20vmin, 13rem);
+    --gap: calc(var(--size) / 14);
+    --duration: 60s;
+    --scroll-start: 0;
+    --scroll-end: calc(-100% - var(--gap));
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-text: var(--foreground);
+        --color-bg: transparent;
+        --color-bg-accent: transparent;
+    }
+}

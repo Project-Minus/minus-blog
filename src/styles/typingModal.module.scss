@@ -1,3 +1,5 @@
+@use "sass:string";
+
 .illustration-editor {
   justify-items: center;
 }
@@ -85,10 +87,10 @@
             animation:
               typing-#{$i}
                 1s
-                unquote((($i - 1) * 1) + "s")
+                string.unquote((($i - 1) * 1) + "s")
                 steps(20, end)
                 forwards,
-              cursor-remain 1s linear unquote((($i - 1) * 1) + "s") 1;
+              cursor-remain 1s linear string.unquote((($i - 1) * 1) + "s") 1;
           }
         }
         &-1,
