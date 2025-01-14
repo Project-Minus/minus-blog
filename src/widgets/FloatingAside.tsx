@@ -2,12 +2,16 @@
 
 import { useGetTable } from "@/api/useGetTable";
 import CodeBox from "@/components/CodeBox";
+import { useSidebarStore } from "@/store/sidebarStore";
 import styles from "@/styles/flotingAside.module.scss";
 import { Category } from "@/type/tableType";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 
 export default function FloatingAside() {
   const { data } = useGetTable("category");
+  const [searchValue, setSearchValue] = useState<string>("");
   const asideData = data as Array<Category>;
+  const { setCategory, setSearch } = useSidebarStore();
 
   return (
     <div className={styles.aside}>
@@ -22,7 +26,13 @@ export default function FloatingAside() {
                   {aside.sub_category?.map((subCategory, subIndex) => {
                     const subKey = `${key}-${subIndex}`;
                     return (
-                      <p className={styles.asideItem} key={subKey}>
+                      <p
+                        className={styles.asideItem}
+                        key={subKey}
+                        onClick={() => {
+                          setCategory(subCategory);
+                        }}
+                      >
                         {` ${subCategory} `}
                       </p>
                     );
@@ -35,7 +45,21 @@ export default function FloatingAside() {
       </CodeBox>
       <CodeBox dots style={{ marginTop: 15 }}>
         <div className={styles.asideSearch}>
-          <input type="text" placeholder="console.log" />
+          <input
+            type="text"
+            placeholder="console.log"
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setSearchValue(e.target.value);
+              if (!e.target.value) {
+                setSearch("");
+              }
+            }}
+            onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+              if (e.key === "Enter") {
+                setSearch(searchValue);
+              }
+            }}
+          />
         </div>
       </CodeBox>
     </div>
