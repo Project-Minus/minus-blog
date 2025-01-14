@@ -3,6 +3,7 @@ export interface Article {
   title: string;
   description: string;
   created_at: Date;
+  category?: string;
 }
 
 export interface Category {
