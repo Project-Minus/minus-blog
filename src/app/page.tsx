@@ -21,7 +21,7 @@ export default async function Home() {
 
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ["table"],
+    queryKey: ["articleTable"],
     queryFn: () => getAllTable("article").catch(console.error),
     staleTime: 60 * 1000, // 바로 stale 상태로 변경되는 것을 방지하기 위해 30초로 설정
   });

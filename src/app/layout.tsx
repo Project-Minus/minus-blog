@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./reset.css";
 import ReactQueryProviders from "@/api/ReactQueryProvider";
-import RecoilRootWrapper from "@/api/RecoilProvider";
 import styles from "../styles/layout.module.scss";
 import AppHeader from "./components/AppHeader";
 import "../styles/globals.css";
@@ -29,11 +28,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${pretendard.variable}`}>
         <AppHeader />
-        <RecoilRootWrapper>
-          <ReactQueryProviders>
-            <div className={styles.wrapper}>{children}</div>
-          </ReactQueryProviders>
-        </RecoilRootWrapper>
+        <ReactQueryProviders>
+          <div className={styles.wrapper}>{children}</div>
+        </ReactQueryProviders>
       </body>
     </html>
   );
