@@ -43,7 +43,7 @@ export default function ArticleList() {
             key={key}
             href={`/category/${item.id}`}
           >
-            <div>
+            <div style={{ width: "100%" }}>
               <p className={styles.mainTitle}>{item.title}</p>
               <p className={styles.mainDesc}>{item.description}</p>
               <p className={styles.mainTime}>{convertTime(item.created_at)}</p>

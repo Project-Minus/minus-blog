@@ -6,6 +6,7 @@ import ReactQueryProviders from "@/api/ReactQueryProvider";
 import styles from "../styles/layout.module.scss";
 import AppHeader from "./components/AppHeader";
 import "../styles/globals.css";
+import AppFooter from "./components/AppFooter";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <ReactQueryProviders>
           <div className={styles.wrapper}>{children}</div>
         </ReactQueryProviders>
+        <AppFooter />
       </body>
     </html>
   );

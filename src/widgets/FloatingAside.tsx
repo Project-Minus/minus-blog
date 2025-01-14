@@ -11,7 +11,7 @@ export default function FloatingAside() {
   const { data } = useGetTable("category");
   const [searchValue, setSearchValue] = useState<string>("");
   const asideData = data as Array<Category>;
-  const { setCategory, setSearch } = useSidebarStore();
+  const { category, setCategory, setSearch } = useSidebarStore();
 
   return (
     <div className={styles.aside}>
@@ -25,11 +25,19 @@ export default function FloatingAside() {
                 <div className={styles.asideBox}>
                   {aside.sub_category?.map((subCategory, subIndex) => {
                     const subKey = `${key}-${subIndex}`;
+                    const itemStyle =
+                      category !== subCategory
+                        ? styles.asideItem
+                        : styles.asideItemActive;
                     return (
                       <p
-                        className={styles.asideItem}
+                        className={itemStyle}
                         key={subKey}
                         onClick={() => {
+                          if (category === subCategory) {
+                            setCategory("");
+                            return;
+                          }
                           setCategory(subCategory);
                         }}
                       >
