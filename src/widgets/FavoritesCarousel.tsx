@@ -20,7 +20,6 @@ export default function FavoritesCarousel() {
   const articleData = data || [];
   return (
     <div className={styles.favoritesCarousel}>
-      {!articleData?.length && <div>Save your favorite articles!</div>}
       {articleData?.length && <CustomCarousel slides={articleData} />}
       <span />
     </div>

@@ -9,7 +9,7 @@ import parse, {
 import { convertPContent } from "@/utils/convertTag";
 import Image from "next/image";
 import styles from "../styles/card.module.scss";
-import tt from "../../public/typescript.svg";
+import typescriptWhite from "../../public/card/typescriptWhite.svg";
 
 interface Props {
   article: Article;
@@ -19,7 +19,9 @@ export default function Card({ article }: Props) {
     if (!(domNode as Element).childNodes) {
       return domNode;
     }
-
+    if (domNode.type === "tag" && domNode.name === "iframe") {
+      return <></>;
+    }
     if (
       domNode.type === "tag" &&
       (domNode.name === "h1" || domNode.name === "h2")
@@ -35,7 +37,7 @@ export default function Card({ article }: Props) {
   };
   return (
     <div className={styles.card}>
-      <Image src={tt} alt="logo" />
+      <Image src={typescriptWhite} alt="logo" />
       <div>
         <div className={styles.title}>{article.title}</div>
         <div className={styles.desc}>

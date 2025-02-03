@@ -26,11 +26,9 @@ export default function CustomCarousel(props: Props) {
   } = usePrevNextButtons(emblaApi);
 
   const selectedDotClass = (index: number) => {
-    return styles[
-      "carousel__dot".concat(
-        index === selectedIndex ? " carousel__dot--selected" : "",
-      )
-    ];
+    return index === selectedIndex
+      ? "carousel__dot--selected"
+      : "carousel__dot";
   };
 
   return (
