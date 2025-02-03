@@ -37,7 +37,12 @@ export default function FloatDial() {
   }, []);
 
   return (
-    <div className={styles.floatDial} style={{ width: 120 }}>
+    <div
+      className={styles.floatDial}
+      style={{ width: 120 }}
+      onMouseEnter={() => setHovered("hovered")}
+      onMouseLeave={() => setHovered("unHovered")}
+    >
       <div className={styles.floatDialList}>
         {dummy.map(({ name, icon }, index) => {
           const key = `${name}_${index}`;
@@ -53,11 +58,7 @@ export default function FloatDial() {
           );
         })}
       </div>
-      <div
-        className={styles.floatDialButton}
-        onMouseEnter={() => setHovered("hovered")}
-        onMouseLeave={() => setHovered("unHovered")}
-      >
+      <div className={styles.floatDialButton}>
         <AiFillContainer size={28} />
       </div>
     </div>

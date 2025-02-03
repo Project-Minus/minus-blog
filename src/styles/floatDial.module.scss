@@ -10,7 +10,12 @@
   align-items: center;
   .floatDialList {
     display: flex;
+    height: 0;
     flex-direction: column;
+    transition: height 0.3s;
+  }
+  .floatDialList:has(.hovered) {
+    height: 100%;
   }
   .floatDialItem {
     width: 100%;
@@ -20,17 +25,23 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 0 5px var(--opacityFore3);
+    @include preventSelect();
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
+    transition-delay: calc(0.05s * var(--reverseIndex));
     &.empty {
+      opacity: 0;
       transform: scale(0);
     }
     &.hovered {
-      transform: scale(0);
-      animation: appearItems 0.5s forwards;
-      animation-delay: calc(0.1s * var(--reverseIndex));
+      opacity: 1;
+      transform: scale(1);
+      @include allowSelect();
     }
     &.unHovered {
-      animation: disAppearItems 0.5s forwards;
-      animation-delay: calc(0.1s * var(--index));
+      opacity: 0;
+      transform: scale(0);
     }
   }
   .floatDialButton {
@@ -47,17 +58,11 @@
 }
 
 @keyframes appearItems {
-  from {
-    transform: scale(0);
-  }
   to {
     transform: scale(1);
   }
 }
 @keyframes disAppearItems {
-  from {
-    transform: scale(1);
-  }
   to {
     transform: scale(0);
   }
