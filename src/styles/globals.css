@@ -1,5 +1,7 @@
 :root {
   --background: rgba(237, 237, 237, 1);
+  --opacityBack3 : rgba(237, 237, 237, 0.3);
+  --opacityBack7 : rgba(237, 237, 237, 0.7);
   --foreground: rgba(32, 32, 32, 1);
   --opacityFore3: rgba(32, 32, 32, 0.3);
   --opacityFore7: rgba(32, 32, 32, 0.7);
@@ -15,6 +17,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgba(32, 32, 32, 1);
+    --opacityBack3: rgba(32, 32, 32, 0.3);
+    --opacityBack7: rgba(32, 32, 32, 0.7);
     --foreground: rgba(237, 237, 237, 1);
     --opacityFore3: rgba(237, 237, 237, 0.3);
     --opacityFore7: rgba(237, 237, 237, 0.7);

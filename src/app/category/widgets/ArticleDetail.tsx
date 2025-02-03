@@ -9,11 +9,12 @@ import parse, {
   HTMLReactParserOptions,
   DOMNode,
 } from "html-react-parser";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { convertPContent } from "@/utils/convertTag";
 import styles from "../../../styles/category.module.scss";
 import ReactCodeBlock from "../../../components/ReactCodeBlock";
 import ScrollSpy from "../components/ScrollSpy";
+import FloatDial from "../../../components/FloatDial";
 
 interface Props {
   articleId: string;
@@ -25,7 +26,6 @@ export default function ArticleDetail({ articleId }: Props) {
     [],
   );
   const favoriteClass = isFavorite ? styles.favorite : styles.unFavorite;
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const getList = window.localStorage.getItem("favorite");
@@ -80,6 +80,20 @@ export default function ArticleDetail({ articleId }: Props) {
         </code>
       );
     }
+    if (domNode.type === "tag" && domNode.name === "iframe") {
+      const { src, title } = domNode.attribs;
+      return (
+        <iframe
+          style={{
+            position: "relative",
+            width: "1200px",
+            transform: "translateX(-250px)",
+          }}
+          src={src}
+          title={title}
+        />
+      );
+    }
 
     if (
       domNode.type === "tag" &&
@@ -101,6 +115,17 @@ export default function ArticleDetail({ articleId }: Props) {
 
     return domNode; // 변경하지 않을 경우 원래 태그 반환
   };
+
+  useLayoutEffect(() => {
+    const hasIframe = data.description.includes("</iframe>");
+    if (hasIframe) {
+      document.body.style.overflowX = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflowX = "";
+    };
+  }, [data]);
   return (
     <div className={styles.category}>
       <ScrollSpy scrollList={scrollSpy.current} />
@@ -120,6 +145,7 @@ export default function ArticleDetail({ articleId }: Props) {
       <div className={styles.contents_wrapper}>
         {parse(convertPContent(data.description), { replace: transform })}
       </div>
+      <FloatDial />
     </div>
   );
 }

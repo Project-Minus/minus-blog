@@ -4,6 +4,8 @@ import { useFilterContainTable } from "@/api/useFilterContainTable";
 import { Article } from "@/type/tableType";
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import styles from "../styles/favoriteList.module.scss";
+import ListTitle from "./ListTitle";
 
 export default function FavoriteList() {
   const [favorites, setFavorites] = useState<Array<string>>([]);
@@ -19,8 +21,13 @@ export default function FavoriteList() {
   const articleData = data || [];
 
   return (
-    <div>
-      {!articleData?.length && <div>Save your favorite articles!</div>}
+    <div className={styles.favoriteList}>
+      <ListTitle text="Favorites" />
+      {!articleData?.length && (
+        <div className={styles.favoriteListEmpty}>
+          Save your favorite articles!
+        </div>
+      )}
       {articleData.map((article, index) => {
         const key = `${article.title}-${article.created_at}-${index}`;
         return <Card key={key} article={article} />;

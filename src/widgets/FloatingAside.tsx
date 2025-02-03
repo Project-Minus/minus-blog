@@ -55,7 +55,7 @@ export default function FloatingAside() {
         <div className={styles.asideSearch}>
           <input
             type="text"
-            placeholder="console.log"
+            placeholder="console.log(title)"
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setSearchValue(e.target.value);
               if (!e.target.value) {

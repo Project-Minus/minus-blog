@@ -2,7 +2,6 @@
 import MainList from "@/widgets/MainList";
 import FloatingAside from "@/widgets/FloatingAside";
 import { Aldrich } from "next/font/google";
-import ListTitle from "@/components/ListTitle";
 import FavoriteList from "@/components/FavoriteList";
 import {
   dehydrate,
@@ -37,10 +36,7 @@ export default async function Home() {
           <TypingModal />
           <Slider />
         </div>
-        <div>
-          <ListTitle text="Favorites" />
-          <FavoriteList />
-        </div>
+        <FavoriteList />
         <main className={styles.main}>
           <FloatingAside />
           <MainList />

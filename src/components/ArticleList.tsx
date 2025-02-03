@@ -7,6 +7,7 @@ import { useSidebarStore } from "@/store/sidebarStore";
 import { useQuery } from "@tanstack/react-query";
 import { getAllTable } from "@/api/init";
 import { useMemo } from "react";
+import Dompurify from "dompurify";
 import styles from "../styles/mainList.module.scss";
 
 export default function ArticleList() {
@@ -35,6 +36,13 @@ export default function ArticleList() {
 
   return (
     <>
+      {articleData?.length < 1 && (
+        <div className={styles.mainEmpty}>
+          There are no registered articles yet!
+          <br />
+          Please wait a little longer!
+        </div>
+      )}
       {articleData?.map((item, index) => {
         const key = `${item.title}-${index}`;
         return (
@@ -45,7 +53,13 @@ export default function ArticleList() {
           >
             <div style={{ width: "100%" }}>
               <p className={styles.mainTitle}>{item.title}</p>
-              <p className={styles.mainDesc}>{item.description}</p>
+              <div className={styles.mainDesc}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: Dompurify.sanitize(item.description),
+                  }}
+                />
+              </div>
               <p className={styles.mainTime}>{convertTime(item.created_at)}</p>
             </div>
           </Link>

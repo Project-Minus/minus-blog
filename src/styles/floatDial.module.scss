@@ -1,0 +1,73 @@
+@use "../styles/mixin.scss" as *;
+
+.floatDial {
+  position: fixed;
+  z-index: 10;
+  right: 50px;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .floatDialList {
+    display: flex;
+    flex-direction: column;
+  }
+  .floatDialItem {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 5px var(--opacityFore3);
+    &.empty {
+      transform: scale(0);
+    }
+    &.hovered {
+      transform: scale(0);
+      animation: appearItems 0.5s forwards;
+      animation-delay: calc(0.1s * var(--reverseIndex));
+    }
+    &.unHovered {
+      animation: disAppearItems 0.5s forwards;
+      animation-delay: calc(0.1s * var(--index));
+    }
+  }
+  .floatDialButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    width: 56px;
+    height: 56px;
+    border-radius: 56px;
+    background-color: var(--pointColor);
+    cursor: pointer;
+  }
+}
+
+@keyframes appearItems {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes disAppearItems {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes disAppearList {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
