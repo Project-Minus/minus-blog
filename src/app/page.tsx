@@ -9,6 +9,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { getAllTable } from "@/api/init";
+import FavoritesCarousel from "@/widgets/FavoritesCarousel";
 import styles from "./page.module.css";
 import Slider from "../components/Slider";
 import TypingModal from "../components/TypingModal";
@@ -37,6 +38,9 @@ export default async function Home() {
           <Slider />
         </div>
         <FavoriteList />
+        <div>
+          <FavoritesCarousel />
+        </div>
         <main className={styles.main}>
           <FloatingAside />
           <MainList />

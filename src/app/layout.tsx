@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./reset.css";
+import "../styles/carouselBase.css";
 import ReactQueryProviders from "@/api/ReactQueryProvider";
 import styles from "../styles/layout.module.scss";
 import AppHeader from "./components/AppHeader";
