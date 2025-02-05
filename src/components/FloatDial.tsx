@@ -51,14 +51,14 @@ export default function FloatDial() {
               id="dial-item"
               className={`${styles.floatDialItem} ${styles[hovered]}`}
               key={key}
+              data-content={name}
             >
-              <p>{name}</p>
               <p>{icon}</p>
             </div>
           );
         })}
       </div>
-      <div className={styles.floatDialButton}>
+      <div className={`${styles.floatDialButton} ${styles[hovered]}`}>
         <AiFillContainer size={28} />
       </div>
     </div>

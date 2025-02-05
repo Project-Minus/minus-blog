@@ -1,0 +1,115 @@
+@use "./mixin.scss" as *;
+
+.common-modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(198, 204, 206, 1);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 4px 6px 16px 0px rgba(0, 0, 0, 0.24);
+  @include modalZIndex();
+  &__depth-blocker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    transform: scale(1.01);
+    @include modalZIndex();
+  }
+  &__wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  &__wrapper--hide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100vw;
+    @include modalZIndex();
+  }
+
+  &__lock-side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 400px;
+    @include modalZIndex();
+  }
+
+  &__title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    > div {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__content {
+    padding: 20px 20px 0 20px;
+    &--break {
+      padding: 20px 20px 0 20px;
+      word-break: break-all;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    gap: 10px;
+  }
+}
+
+.common-modal--center {
+  top: 50%;
+  left: 50%;
+}
+
+.common-modal--mapBottom {
+  bottom: -80px;
+  left: calc(50% - 200px);
+}
+
+.common-modal--large {
+  width: 1000px;
+}
+
+.common-modal--mid {
+  width: 600px;
+}
+
+.common-modal--small {
+  width: 400px;
+}
+
+.common-modal--background {
+  overflow-x: hidden;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100vh;
+  @include modalBackgroundZIndex();
+
+  &--hide {
+    display: none;
+  }
+}

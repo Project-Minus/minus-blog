@@ -36,6 +36,7 @@
     "import/extensions": ["error", "ignorePackages"], // 라이브러리 패키지는 제외하고 import문에 확장자 없을 시 에러. 에러시 수동수정 필요 (TypeScript에서는 확장자 붙이는 것을 권장)
     "no-console": "warn", // airbnb 규칙에선 no-console 규칙을 어기면 warn이나, error로 설정함.
     "import/prefer-default-export": "off", //default export 만 허용하는 규칙 off
+    "import/no-cycle": "off", //순환참조 비허용 규칙 off
     "import/extensions": [ //file import 시 밑에 해당하는 file은 확장자를 붙이지 않음
       "error",
       "ignorePackages",

@@ -18,18 +18,44 @@
     height: 100%;
   }
   .floatDialItem {
+    position: relative;
     width: 100%;
     margin: 10px 0;
     padding: 10px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 0 5px var(--opacityFore3);
+    background-color: transparent;
+    border: 3px solid rgba(0, 0, 0, 0);
+    color: var(--foreground);
+    font-weight: bold;
+    cursor: pointer;
     @include preventSelect();
     transition:
       transform 0.3s,
-      opacity 0.3s;
+      opacity 0.3s,
+      border 0.2s,
+      color 0.2s;
     transition-delay: calc(0.05s * var(--reverseIndex));
+    &::after {
+      content: attr(data-content);
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      width: 0;
+      height: 100%;
+      opacity: 0;
+      color: var(--foreground);
+      font-size: 12px;
+      background-color: var(--pointColor);
+      transition:
+        width 0.3s,
+        opacity 0.3s;
+    }
     &.empty {
       opacity: 0;
       transform: scale(0);
@@ -43,6 +69,15 @@
       opacity: 0;
       transform: scale(0);
     }
+    &:hover {
+      border: 3px solid var(--pointColor);
+      color: var(--pointColor);
+      &::after {
+        opacity: 1;
+        width: 100%;
+        background-color: var(--pointColor);
+      }
+    }
   }
   .floatDialButton {
     display: flex;
@@ -53,26 +88,11 @@
     height: 56px;
     border-radius: 56px;
     background-color: var(--pointColor);
+    transform: scale(1);
+    transition: transform 0.2s;
     cursor: pointer;
-  }
-}
-
-@keyframes appearItems {
-  to {
-    transform: scale(1);
-  }
-}
-@keyframes disAppearItems {
-  to {
-    transform: scale(0);
-  }
-}
-
-@keyframes disAppearList {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(0);
+    &.hovered {
+      transform: scale(1.1);
+    }
   }
 }

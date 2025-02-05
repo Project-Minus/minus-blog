@@ -34,6 +34,7 @@ export default function RootLayout({
           <div className={styles.wrapper}>{children}</div>
         </ReactQueryProviders>
         <AppFooter />
+        <div id="modal-root" />
       </body>
     </html>
   );
