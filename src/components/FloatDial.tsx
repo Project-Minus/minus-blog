@@ -1,27 +1,16 @@
 "use client";
 
 import { AiFillContainer } from "react-icons/ai";
-import { BiWindow, BiArea } from "react-icons/bi";
-import { CiIndent } from "react-icons/ci";
 import { useEffect, useState } from "react";
+import { DialItemType } from "@/type/dial";
 import styles from "../styles/floatDial.module.scss";
 
-export default function FloatDial() {
+interface Props {
+  items: Array<DialItemType>;
+  currentType: string;
+}
+export default function FloatDial({ items, currentType }: Props) {
   const [hovered, setHovered] = useState<string>("empty");
-  const dummy = [
-    {
-      name: "Popup",
-      icon: <BiWindow size={24} />,
-    },
-    {
-      name: "Modal",
-      icon: <BiArea size={24} />,
-    },
-    {
-      name: "In docs",
-      icon: <CiIndent size={24} />,
-    },
-  ];
 
   useEffect(() => {
     document.querySelectorAll("#dial-item").forEach((item, index) => {
@@ -44,14 +33,16 @@ export default function FloatDial() {
       onMouseLeave={() => setHovered("unHovered")}
     >
       <div className={styles.floatDialList}>
-        {dummy.map(({ name, icon }, index) => {
+        {items.map(({ name, icon, onClick }, index) => {
           const key = `${name}_${index}`;
+          const isSelected = currentType === name ? "selected" : "";
           return (
             <div
               id="dial-item"
-              className={`${styles.floatDialItem} ${styles[hovered]}`}
+              className={`${styles.floatDialItem} ${styles[hovered]} ${styles[isSelected]}`}
               key={key}
               data-content={name}
+              onClick={onClick}
             >
               <p>{icon}</p>
             </div>

@@ -1,0 +1,51 @@
+@use "./mixin.scss" as *;
+
+$offset-with-size: (
+  "small": 63,
+  "medium": 88,
+  "large": 188.5,
+  "extraLarge": 252,
+);
+.loading {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 1);
+  top: 0;
+  left: 0;
+  @include spinnerZIndex();
+  width: 100vw;
+  height: 100vh;
+}
+@each $offsetSize, $offset in $offset-with-size {
+  @keyframes progressing-#{$offsetSize} {
+    0% {
+      stroke-dashoffset: $offset;
+    }
+    50% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -$offset;
+    }
+  }
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @each $offsetSize, $offset in $offset-with-size {
+    &__box--#{$offsetSize} {
+      stroke-dasharray: $offset;
+      stroke-dashoffset: $offset;
+      transform: rotate(-90deg);
+      animation: progressing-#{$offsetSize} 2.5s linear infinite;
+    }
+  }
+  circle {
+    stroke-width: 2.5;
+  }
+}

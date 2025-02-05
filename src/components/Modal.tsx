@@ -1,10 +1,14 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
-import "./style.scss";
 import { createRoot, Root } from "react-dom/client";
 import { ModalConfig } from "@/type/modal";
 import ModalWrapper from "@/components/ModalWrapper";
+import parse, { HTMLReactParserOptions } from "html-react-parser";
+import { convertPContent } from "@/utils/convertTag";
+import "@/styles/modal.scss";
+import IframeWithLoading from "@/app/category/components/IframeWithLoading";
+import { IFRAME_TYPE } from "@/constants/iframeConstants";
 
 interface Props {
   title: string;
@@ -19,11 +23,11 @@ interface Props {
   isOneButton?: boolean;
   oneButtonTitle?: "Close" | "OK";
   hasClose?: boolean;
-  hasTitleDivider?: boolean;
   hasDepth?: boolean;
   position?: "center" | "mapBottom";
-  size?: "small" | "mid" | "large";
+  size?: "small" | "mid" | "large" | "dynamic";
   isBreakWord?: boolean;
+  iframeData?: string;
 }
 
 export default function Modal(props: Props) {
@@ -40,14 +44,15 @@ export default function Modal(props: Props) {
     isOneButton = false,
     oneButtonTitle = "Close",
     hasClose = false,
-    hasTitleDivider = true,
     hasDepth = false,
     position = "center",
     size = "small",
     isBreakWord = false,
+    iframeData = "",
   } = props;
 
   const breakWordClass = isBreakWord ? "--break" : "";
+  const isIframeContent = !!iframeData;
 
   useEffect(() => {
     // 모달이 open, close 시 스크롤 방지 등의 로직 추가
@@ -62,6 +67,21 @@ export default function Modal(props: Props) {
     };
   }, [onMount, onUnMount, open]);
 
+  const iframeConverter: HTMLReactParserOptions["replace"] = (domNode) => {
+    if (domNode.type === "tag" && domNode.name === "iframe") {
+      const { src, title: articleTitle } = domNode.attribs;
+
+      return (
+        <IframeWithLoading
+          src={src}
+          title={articleTitle}
+          iframeType={IFRAME_TYPE.modal}
+        />
+      );
+    }
+    return <></>;
+  };
+
   const getFontSize = () => {
     switch (size) {
       case "small":
@@ -69,6 +89,8 @@ export default function Modal(props: Props) {
       case "mid":
         return 24;
       case "large":
+        return 24;
+      case "dynamic":
         return 24;
       default:
         return 20;
@@ -87,19 +109,11 @@ export default function Modal(props: Props) {
         className={`common-modal common-modal--${size} common-modal--${position}`}
       >
         {hasDepth && <div className="common-modal__depth-blocker" />}
-        <div
-          className="common-modal__title"
-          style={{
-            borderBottom: hasTitleDivider
-              ? "1px solid rgba(226, 232, 236, 1)"
-              : "none",
-          }}
-        >
+        <div className="common-modal__title">
           <div
             style={{
               fontSize: getFontSize(),
               fontWeight: 700,
-              color: "rgba(17, 17, 17, 1)",
             }}
           >
             {title}
@@ -109,7 +123,11 @@ export default function Modal(props: Props) {
           ) : null}
         </div>
         <div className={`common-modal__content${breakWordClass} ${position}`}>
-          {children}
+          {isIframeContent &&
+            parse(convertPContent(iframeData), {
+              replace: iframeConverter,
+            })}
+          {!isIframeContent && children}
         </div>
         <div className="common-modal__buttons">
           {isOneButton ? (

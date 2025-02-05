@@ -26,17 +26,25 @@
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
-    border: 3px solid rgba(0, 0, 0, 0);
+    border: 2px solid rgba(0, 0, 0, 0);
     color: var(--foreground);
     font-weight: bold;
     cursor: pointer;
+    overflow: hidden;
     @include preventSelect();
     transition:
       transform 0.3s,
       opacity 0.3s,
-      border 0.2s,
-      color 0.2s;
+      color 0.2s,
+      border 0.2s;
     transition-delay: calc(0.05s * var(--reverseIndex));
+
+    > p {
+      position: relative;
+      right: 0;
+      transition: right 0.3s;
+    }
+
     &::after {
       content: attr(data-content);
       position: absolute;
@@ -51,10 +59,10 @@
       opacity: 0;
       color: var(--foreground);
       font-size: 12px;
-      background-color: var(--pointColor);
       transition:
         width 0.3s,
-        opacity 0.3s;
+        opacity 0.4s,
+        color 0.3s;
     }
     &.empty {
       opacity: 0;
@@ -69,13 +77,21 @@
       opacity: 0;
       transform: scale(0);
     }
-    &:hover {
-      border: 3px solid var(--pointColor);
+    &.selected {
       color: var(--pointColor);
+      border: 2px solid var(--pointColor);
+      &::after {
+        color: var(--pointColor);
+      }
+    }
+    &:hover {
+      > p {
+        position: relative;
+        right: 100px;
+      }
       &::after {
         opacity: 1;
         width: 100%;
-        background-color: var(--pointColor);
       }
     }
   }

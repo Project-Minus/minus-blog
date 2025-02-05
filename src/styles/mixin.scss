@@ -49,7 +49,7 @@
   z-index: 1050;
 }
 
-@mixin loadingZIndex {
+@mixin spinnerZIndex {
   z-index: 10000000;
 }
 @mixin toastZIndex {

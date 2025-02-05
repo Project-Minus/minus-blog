@@ -5,11 +5,12 @@
   flex-direction: column;
   position: fixed;
   transform: translate(-50%, -50%);
-  border: 1px solid rgba(198, 204, 206, 1);
+  border: 1px solid bar(--opacity);
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 4px 6px 16px 0px rgba(0, 0, 0, 0.24);
+  background-color: var(--opacityBack3);
+  box-shadow: 0px 0px 3px 3px rgba(255, 255, 255, 1);
   @include modalZIndex();
+  background-color: var(--background);
   &__depth-blocker {
     position: absolute;
     width: 100%;
@@ -52,6 +53,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    color: var(--foreground);
 
     > div {
       &:hover {
