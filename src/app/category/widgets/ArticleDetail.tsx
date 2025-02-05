@@ -214,10 +214,10 @@ export default function ArticleDetail({ articleId }: Props) {
         </div>
       </div>
       {hasIframe && (
-        <div>
+        <div className={styles.iframeInfo}>
           ※ 해당 페이지는 component story가 포함되어 있습니다.
           <br />
-          브라우저를 100% 크기로 보시기를 권장 드립니다.
+          전체화면으로 보시기를 권장 드립니다.
           <br />
           또한 우측 하단의 dial을 사용하실 수있습니다.
           <br />

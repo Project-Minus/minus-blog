@@ -6,6 +6,7 @@ import ArticleDetail from "../widgets/ArticleDetail";
 interface Props {
   params: Promise<{ id: string }>;
 }
+
 export async function generateStaticParams() {
   const posts = (await getAllTable("article").then(
     (res) => res.data,
