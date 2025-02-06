@@ -32,6 +32,7 @@ export default function IframeWithLoading({
           position: "relative",
           width: "1200px",
           height: "100%",
+          margin: isIframeInDocs ? "30px 0" : "0px",
           transform: isIframeInDocs ? "translateX(-250px)" : "translateX(0px)",
           opacity: loading ? 0 : 1, // ✅ 로딩 중이면 투명하게 처리
           transition: "opacity 0.3s ease-in-out",
