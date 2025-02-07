@@ -35,6 +35,7 @@ export default function RootLayout({
         </ReactQueryProviders>
         <AppFooter />
         <div id="modal-root" />
+        <div id="image-viewer-root" />
       </body>
     </html>
   );

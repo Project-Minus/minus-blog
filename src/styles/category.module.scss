@@ -1,11 +1,12 @@
 @use "../styles/mixin.scss" as *;
 
 .category {
+  font-family: "Pretendard Variable", Arial, Helvetica, sans-serif;
   position: relative;
   .scroll_spy {
     position: fixed;
     top: 130px;
-    right: calc(50% - 500px);
+    left: 50px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -13,6 +14,7 @@
     padding: 0px 15px;
   }
   .scroll_tags {
+    max-width: calc((100vw - 1000px) / 2 );
     display: flex;
     font-weight: 700;
     transition: all 0.5s;
@@ -62,6 +64,7 @@
     margin-top: 30px;
     margin-bottom: 40px;
     padding: 20px;
+    font-weight: bold;
     color: var(--subColor);
     line-height: 1.5;
     text-align: center;
@@ -73,8 +76,8 @@
     top: 0; 
     width: 15px;
     height: 15px; 
-    border-top: 2px solid var(--foreground); 
-    border-left: 2px solid var(--foreground);
+    border-top: 5px solid var(--foreground); 
+    border-left: 5px solid var(--foreground);
     }
 
     &::after{
@@ -84,8 +87,8 @@
     bottom: 0; 
     width: 15px;
     height: 15px; 
-    border-right: 2px solid var(--foreground); 
-    border-bottom: 2px solid var(--foreground);
+    border-right: 5px solid var(--foreground); 
+    border-bottom: 5px solid var(--foreground);
     }
   }
   // cms에서 받은 content style

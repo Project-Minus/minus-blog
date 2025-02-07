@@ -30,17 +30,16 @@ export default function IframeWithLoading({
         ref={iframeRef}
         style={{
           position: "relative",
-          width: "1200px",
+          width: isIframeInDocs ? "100%" : "1200px",
           height: "100%",
-          margin: isIframeInDocs ? "30px 0" : "0px",
-          transform: isIframeInDocs ? "translateX(-250px)" : "translateX(0px)",
+          padding: isIframeInDocs ? "20px 0 40px" : "0px",
           opacity: loading ? 0 : 1, // ✅ 로딩 중이면 투명하게 처리
           transition: "opacity 0.3s ease-in-out",
         }}
         onLoad={() => {
           setLoading(false);
         }}
-        src={src}
+        src={isIframeInDocs ? `${src}/mini` : src}
         title={title}
       />
     </div>

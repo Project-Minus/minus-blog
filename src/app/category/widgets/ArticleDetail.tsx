@@ -33,6 +33,7 @@ import IframeWithLoading from "../components/IframeWithLoading";
 interface Props {
   articleId: string;
 }
+
 export default function ArticleDetail({ articleId }: Props) {
   const { data } = useGetTableById<Article>("article", articleId as string);
   const [iframeType, setIframeType] = useState<string>(IFRAME_TYPE.inDocs);
@@ -149,7 +150,9 @@ export default function ArticleDetail({ articleId }: Props) {
 
       if (
         domNode.type === "tag" &&
-        (domNode.name === "h1" || domNode.name === "h2")
+        (domNode.name === "h1" ||
+          domNode.name === "h2" ||
+          domNode.name === "h3")
       ) {
         const element = domNode?.childNodes as Array<DOMNode>;
         const nodeInReact = domToReact(element);
@@ -198,7 +201,7 @@ export default function ArticleDetail({ articleId }: Props) {
   }, [data.description, iframeType]);
 
   return (
-    <div className={styles.category}>
+    <div className={`${styles.category}`}>
       <ScrollSpy scrollList={scrollSpy.current} />
       <div className={styles.title}>{data?.title}</div>
       <div className={styles.infos}>
@@ -215,13 +218,13 @@ export default function ArticleDetail({ articleId }: Props) {
       </div>
       {hasIframe && (
         <div className={styles.iframeInfo}>
-          ※ 해당 페이지는 component story가 포함되어 있습니다.
+          ※ 해당 페이지는 Component Story가 포함되어 있습니다.
           <br />
           전체화면으로 보시기를 권장 드립니다.
           <br />
-          또한 우측 하단의 dial을 사용하실 수있습니다.
+          또한 우측 하단의 Dial을 사용하실 수있습니다.
           <br />
-          해당 dial로 원하는 형식의 component story를 고르실 수 있습니다.
+          popup, modal 에서 Full Docs를 확인하실 수 있습니다.
         </div>
       )}
       <div className={styles.contents_wrapper}>
