@@ -40,8 +40,9 @@ export default function ArticleDetail({ articleId }: Props) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const { lockScroll, openScroll } = useBodyScrollLock();
   const hasIframe = useMemo(() => {
-    return data.description.includes("</iframe>");
-  }, [data.description]);
+    return data?.description?.includes("</iframe>") ?? false;
+  }, [data?.description]);
+
   const scrollSpy = useRef<Array<{ id: string; tag: string; text: string }>>(
     [],
   );
@@ -184,6 +185,10 @@ export default function ArticleDetail({ articleId }: Props) {
   }, [articleId]);
 
   useLayoutEffect(() => {
+    if (!data) {
+      return;
+    }
+
     if (hasIframe) {
       document.body.style.overflowX = "hidden";
     }
@@ -194,6 +199,9 @@ export default function ArticleDetail({ articleId }: Props) {
   }, [data, hasIframe]);
 
   useEffect(() => {
+    if (!data.description) {
+      return;
+    }
     const { title, url } = getIframeUrl(data.description);
     if (iframeType === IFRAME_TYPE.popup) {
       window.open(url, title, "popup=yes");
@@ -228,9 +236,10 @@ export default function ArticleDetail({ articleId }: Props) {
         </div>
       )}
       <div className={styles.contents_wrapper}>
-        {parse(convertPContent(data.description), {
-          replace: transform,
-        })}
+        {data?.description &&
+          parse(convertPContent(data.description), {
+            replace: transform,
+          })}
       </div>
       {hasIframe && (
         <>
