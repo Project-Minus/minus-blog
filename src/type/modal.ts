@@ -6,7 +6,6 @@ export interface ModalConfig {
   background?: boolean;
   disableBackgroundInteract?: boolean;
   hasClose?: boolean;
-  hasTitleDivider?: boolean;
   hasDepth?: boolean;
   position?: "center" | "mapBottom";
   size?: "small" | "mid" | "large";

@@ -20,7 +20,6 @@ export default function ModalWrapper(props: Props) {
     background = true,
     disableBackgroundInteract = false,
     hasClose = true,
-    hasTitleDivider = true,
     hasDepth = false,
     buttonTitle = "OK",
     isBreakWord = false,
@@ -100,7 +99,6 @@ export default function ModalWrapper(props: Props) {
       disableBackgroundInteract={disableBackgroundInteract}
       hasDepth={hasDepth}
       hasClose={hasClose}
-      hasTitleDivider={hasTitleDivider}
       isOneButton={modalConfig.buttons}
       oneButtonTitle={buttonTitle}
       onClickOk={clickOk}
