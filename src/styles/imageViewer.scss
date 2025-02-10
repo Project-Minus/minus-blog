@@ -1,0 +1,57 @@
+@use "../styles/mixin.scss" as *;
+
+.imageViewerWrapper {
+  perspective: 10000px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  @include imageViewerZIndex();
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  will-change: transform;
+  animation: viewerScaleUp 0.2s 1 forwards;
+  color: var(--foreground);
+  .viewerPort {
+    position: relative;
+    width: 800px;
+    height: 650px;
+  }
+  .viewerContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    backface-visibility: visible;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+  .viewerButtons {
+    position: relative;
+    padding: 20px;
+    background-color: rgba(15, 15, 15, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    font-size: 24px;
+    border-radius: 50px;
+    color: var(--foreground);
+    .icon {
+      color: var(--foreground);
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes viewerScaleUp {
+  0% {
+    transform: scale(0.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

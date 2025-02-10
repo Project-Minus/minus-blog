@@ -27,7 +27,9 @@
 }
 
 // --- z index
-
+@mixin imageViewerZIndex() {
+  z-index: 1000000;
+}
 @mixin sidebarZIndex() {
   z-index: 1000;
 }

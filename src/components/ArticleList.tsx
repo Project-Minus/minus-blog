@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useSidebarStore } from "@/store/sidebarStore";
 import { useQuery } from "@tanstack/react-query";
 import { getAllTable } from "@/api/init";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Dompurify from "dompurify";
 import styles from "../styles/mainList.module.scss";
 
@@ -16,6 +16,10 @@ export default function ArticleList() {
     queryFn: () => getAllTable("article").catch(console.error),
   });
   const { category, search } = useSidebarStore();
+  const [sanitizedDescriptions, setSanitizedDescriptions] = useState<
+    Record<number, string>
+  >({});
+
   const articleData = useMemo(() => {
     if (!tableData) {
       return [];
@@ -33,7 +37,15 @@ export default function ArticleList() {
     }
     return articles;
   }, [category, tableData, search]);
-
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const sanitizedData: Record<number, string> = {};
+      articleData.forEach((item, index) => {
+        sanitizedData[index] = Dompurify.sanitize(item.description);
+      });
+      setSanitizedDescriptions(sanitizedData);
+    }
+  }, [articleData]);
   return (
     <>
       {articleData?.length < 1 && (
@@ -43,28 +55,31 @@ export default function ArticleList() {
           Please wait a little longer!
         </div>
       )}
-      {articleData?.map((item, index) => {
-        const key = `${item.title}-${index}`;
-        return (
-          <Link
-            className={styles.mainLink}
-            key={key}
-            href={`/category/${item.id}`}
-          >
-            <div style={{ width: "100%" }}>
-              <p className={styles.mainTitle}>{item.title}</p>
-              <div className={styles.mainDesc}>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: Dompurify.sanitize(item.description),
-                  }}
-                />
+      {articleData &&
+        articleData.map((item, index) => {
+          const key = `${item.title}-${index}`;
+          return (
+            <Link
+              className={styles.mainLink}
+              key={key}
+              href={`/category/${item.id}`}
+            >
+              <div style={{ width: "100%" }}>
+                <p className={styles.mainTitle}>{item.title}</p>
+                <div className={styles.mainDesc}>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizedDescriptions[index] || "",
+                    }}
+                  />
+                </div>
+                <p className={styles.mainTime}>
+                  {convertTime(item.created_at)}
+                </p>
               </div>
-              <p className={styles.mainTime}>{convertTime(item.created_at)}</p>
-            </div>
-          </Link>
-        );
-      })}
+            </Link>
+          );
+        })}
     </>
   );
 }

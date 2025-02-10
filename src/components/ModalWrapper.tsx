@@ -1,3 +1,5 @@
+"use client";
+
 import { ModalConfig } from "@/type/modal";
 import { useCallback, useEffect, useRef } from "react";
 import { getModalConfig } from "@/utils/modalConfig";
@@ -26,9 +28,15 @@ export default function ModalWrapper(props: Props) {
   } = props;
 
   const modalConfig = getModalConfig(type, title ?? "");
-  const isScroll = window.innerHeight !== document.body.scrollHeight;
+  const isScroll =
+    typeof window !== "undefined"
+      ? window.innerHeight !== document.body.scrollHeight
+      : false;
   const scrollRef = useRef<number>(0);
   const lockScroll = useCallback(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
     const { scrollY } = window;
     const scorllValue = scrollY || scrollRef.current;
 
@@ -42,6 +50,9 @@ export default function ModalWrapper(props: Props) {
 
   // 모달이 닫혔을 때 스크롤을 활성화 한다.
   const openScroll = useCallback(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
     const topPosition = parseInt(document.body.style.top || "0", 10) * -1;
     const { scrollY } = window;
     const scroll = topPosition || scrollY;
@@ -52,6 +63,9 @@ export default function ModalWrapper(props: Props) {
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
     scrollRef.current = window.scrollY;
   }, []);
 
@@ -83,10 +97,16 @@ export default function ModalWrapper(props: Props) {
     const handleUnmountOnAddressChange = () => {
       closeModal();
     };
-
+    if (typeof window === "undefined") {
+      return;
+    }
     window.addEventListener("popstate", handleUnmountOnAddressChange);
-    return () =>
+    return () => {
+      if (typeof window === "undefined") {
+        return;
+      }
       window.removeEventListener("popstate", handleUnmountOnAddressChange);
+    };
   }, [closeModal]);
 
   return (

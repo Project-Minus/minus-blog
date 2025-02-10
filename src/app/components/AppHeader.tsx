@@ -30,6 +30,9 @@ export default function AppHeader() {
 
   useEffect(() => {
     const onScroll = () => {
+      if (typeof window === "undefined") {
+        return;
+      }
       if (window.scrollY > 1) {
         setScroll({
           backdropFilter: "saturate(180%) blur(5px)",
@@ -39,8 +42,14 @@ export default function AppHeader() {
         setScroll({});
       }
     };
+    if (typeof window === "undefined") {
+      return;
+    }
     window.addEventListener("scroll", onScroll);
     return () => {
+      if (typeof window === "undefined") {
+        return;
+      }
       window.removeEventListener("scroll", onScroll);
     };
   }, [colorScheme]);

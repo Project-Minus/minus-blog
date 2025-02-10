@@ -24,6 +24,8 @@ import { CiIndent } from "react-icons/ci";
 import Modal from "@/components/Modal";
 import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 import { IFRAME_TYPE } from "@/constants/iframeConstants";
+import Image from "next/image";
+import ImageViewer from "@/components/ImageViewer";
 import styles from "../../../styles/category.module.scss";
 import ReactCodeBlock from "../../../components/ReactCodeBlock";
 import ScrollSpy from "../components/ScrollSpy";
@@ -168,6 +170,19 @@ export default function ArticleDetail({ articleId }: Props) {
         }
         return <Tag id={elementId}>{nodeInReact}</Tag>;
       }
+      if (domNode.type === "tag" && domNode.name === "img") {
+        const { src } = domNode.attribs;
+        return (
+          <div
+            style={{ position: "relative", width: "100%", height: "500px" }}
+            onClick={() => {
+              ImageViewer.open({ url: src });
+            }}
+          >
+            <Image src={src} fill style={{ objectFit: "contain" }} alt="" />
+          </div>
+        );
+      }
 
       return domNode; // 변경하지 않을 경우 원래 태그 반환
     },
@@ -204,7 +219,9 @@ export default function ArticleDetail({ articleId }: Props) {
     }
     const { title, url } = getIframeUrl(data.description);
     if (iframeType === IFRAME_TYPE.popup) {
-      window.open(url, title, "popup=yes");
+      if (typeof window !== "undefined") {
+        window.open(url, title, "popup=yes");
+      }
     }
   }, [data.description, iframeType]);
 

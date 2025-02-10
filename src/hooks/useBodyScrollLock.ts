@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useRef } from "react";
 
 export default function useBodyScrollLock(maintainLayout: boolean = true) {
-  const isScroll = window.innerHeight !== document.body.scrollHeight;
+  const isScroll =
+    typeof window !== "undefined"
+      ? window.innerHeight !== document.body.scrollHeight
+      : false;
   const scrollRef = useRef<number>(0);
   const lockScroll = useCallback(() => {
     if (typeof window === "undefined") {
@@ -34,10 +37,16 @@ export default function useBodyScrollLock(maintainLayout: boolean = true) {
   }, [maintainLayout]);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
     scrollRef.current = window.scrollY;
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
     window.scrollTo(0, 0);
   }, []);
 
