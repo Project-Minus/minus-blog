@@ -26,6 +26,9 @@ dependencies:
   html-react-parser:
     specifier: ^5.2.0
     version: 5.2.0(@types/react@18.3.12)(react@18.3.1)
+  immer:
+    specifier: ^10.1.1
+    version: 10.1.1
   next:
     specifier: 15.0.3
     version: 15.0.3(react-dom@18.3.1)(react@18.3.1)(sass@1.80.6)
@@ -46,7 +49,7 @@ dependencies:
     version: 9.0.1(@types/react@18.3.12)(react@18.3.1)
   zustand:
     specifier: ^5.0.2
-    version: 5.0.2(@types/react@18.3.12)(react@18.3.1)
+    version: 5.0.2(@types/react@18.3.12)(immer@10.1.1)(react@18.3.1)
 
 devDependencies:
   '@types/node':
@@ -2418,6 +2421,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
+    dev: false
+
   /immutable@4.3.7:
     resolution: {integrity: sha512-1hqclzwYwjRDFLjcFxOM5AYkkG0rpFPpr1RLPMEuGczoS7YA8gLhy8SWXYRAA/XwfEHpfo3cw5JGioS32fnMRw==}
 
@@ -4382,7 +4389,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand@5.0.2(@types/react@18.3.12)(react@18.3.1):
+  /zustand@5.0.2(@types/react@18.3.12)(immer@10.1.1)(react@18.3.1):
     resolution: {integrity: sha512-8qNdnJVJlHlrKXi50LDqqUNmUbuBjoKLrYQBnoChIbVph7vni+sY+YpvdjXG9YLd/Bxr6scMcR+rm5H3aSqPaw==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
@@ -4401,6 +4408,7 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.3.12
+      immer: 10.1.1
       react: 18.3.1
     dev: false
 

@@ -32,9 +32,10 @@
     "react/jsx-no-useless-fragment": "off",
     "react/require-default-props": "off",
     "react/no-array-index-key" : "off",
+    "no-param-reassign" : "off", //immer등 라이브러리 사용시 불변성을 유지하기 위해 draft 사용하는데 해당 옵션 허용 필요
+    "no-useless-return" : "off", //ealry return을 사용하기 위해 off
     "@typescript-eslint/camelcase": "off",
     "consistent-return": "off", //arrow function return 하지 못하는 규칙 off
-    "import/extensions": ["error", "ignorePackages"], // 라이브러리 패키지는 제외하고 import문에 확장자 없을 시 에러. 에러시 수동수정 필요 (TypeScript에서는 확장자 붙이는 것을 권장)
     "no-console": "warn", // airbnb 규칙에선 no-console 규칙을 어기면 warn이나, error로 설정함.
     "import/prefer-default-export": "off", //default export 만 허용하는 규칙 off
     "import/no-cycle": "off", //순환참조 비허용 규칙 off
