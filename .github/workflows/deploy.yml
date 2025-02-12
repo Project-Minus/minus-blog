@@ -23,8 +23,8 @@ jobs:
       # .env에 있던 환경변수들을 등록해주는 단계
       - name: .env setting
         run: |
-          echo "VITE_SUPABASE_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_KEY }}" >> .env
-          echo "VITE_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_SUPABASE_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_KEY }}" >> .env
+          echo "NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}" >> .env
 
       # Node.js 환경 설정 (pnpm을 사용하려면 필수)
       - name: Set up Node.js
