@@ -2,6 +2,9 @@
   --background: rgba(237, 237, 237, 1);
   --opacityBack3 : rgba(237, 237, 237, 0.3);
   --opacityBack7 : rgba(237, 237, 237, 0.7);
+  --boxground: rgba(40, 40, 40, 1);
+  --opacityBox3: rgba(40, 40, 40, 0.3);
+  --opacityBox7: rgba(40, 40, 40, 0.7);
   --foreground: rgba(32, 32, 32, 1);
   --opacityFore3: rgba(32, 32, 32, 0.3);
   --opacityFore7: rgba(32, 32, 32, 0.7);
@@ -11,14 +14,20 @@
   --subColor: rgba(255, 85, 85, 1);
   --opacitySub3: rgba(255, 85, 85, 0.3);
   --opacitySub7: rgba(255, 85, 85, 0.7);
+  --tagColor: rgba(255, 137, 38,1);
+  --opacityTag3: rgba(255, 137, 38,0.3);
+  --opacityTag7: rgba(255, 137, 38,0.7);
   --gray: #999;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: rgba(32, 32, 32, 1);
-    --opacityBack3: rgba(32, 32, 32, 0.3);
-    --opacityBack7: rgba(32, 32, 32, 0.7);
+    --background: rgba(28, 32, 36, 1);
+    --opacityBack3: rgba(28, 32, 36, 0.3);
+    --opacityBack7: rgba(28, 32, 36, 0.7);
+    --boxground: rgba(40,40,40,1);
+    --opacityBox3: rgba(40,40,40,0.3);
+    --opacityBox7: rgba(40,40,40,0.7);
     --foreground: rgba(237, 237, 237, 1);
     --opacityFore3: rgba(237, 237, 237, 0.3);
     --opacityFore7: rgba(237, 237, 237, 0.7);
@@ -28,6 +37,9 @@
     --subColor: rgba(255, 85, 85, 1);
     --opacitySub3: rgba(255, 85, 85, 0.3);
     --opacitySub7: rgba(255, 85, 85, 0.7);
+    --tagColor: rgba(255, 137, 38, 1);
+    --opacityTag3: rgba(255, 137, 38, 0.3);
+    --opacityTag7: rgba(255, 137, 38, 0.7);
     --gray: #999;
   }
 }

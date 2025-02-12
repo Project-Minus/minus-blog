@@ -26,6 +26,7 @@ import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 import { IFRAME_TYPE } from "@/constants/iframeConstants";
 import Image from "next/image";
 import ImageViewer from "@/components/ImageViewer";
+import CodeLine from "@/components/CodeLine";
 import styles from "../../../styles/category.module.scss";
 import ReactCodeBlock from "../../../components/ReactCodeBlock";
 import ScrollSpy from "../components/ScrollSpy";
@@ -123,8 +124,9 @@ export default function ArticleDetail({ articleId }: Props) {
         return domNode;
       }
 
-      if (domNode.type === "tag" && domNode.name === "code") {
-        const element = domNode.childNodes as Array<DOMNode>;
+      if (domNode.type === "tag" && domNode.name === "pre") {
+        const element = (domNode.childNodes[0] as Element)
+          .childNodes as Array<DOMNode>;
         const nodeInReact = domToReact(element);
         return (
           <code className={styles.contents_code}>
@@ -136,6 +138,11 @@ export default function ArticleDetail({ articleId }: Props) {
             </CodeBox>
           </code>
         );
+      }
+      if (domNode.type === "tag" && domNode.name === "code") {
+        const element = domNode?.childNodes as Array<DOMNode>;
+        const nodeInReact = domToReact(element);
+        return <CodeLine content={nodeInReact} />;
       }
       if (domNode.type === "tag" && domNode.name === "iframe") {
         const { src, title } = domNode.attribs;

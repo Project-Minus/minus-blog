@@ -7,17 +7,16 @@ body {
   height: 100%;
   color: var(--foreground);
   background: var(--background);
-  font-family: "Pretendard Variable", Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  * {
+    font-family: inherit;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 }
 
-* {
-  font-family: "Pretendard Variable", Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
 
 a {
   color: inherit;
