@@ -1,0 +1,27 @@
+.image_renderer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0;
+  width: 100%;
+  min-height: 150px;
+  max-height: 500px;
+  aspect-ratio: auto;
+  cursor: pointer;
+  &::before {
+    content: "View";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s;
+  }
+  &:hover {
+    &::before {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

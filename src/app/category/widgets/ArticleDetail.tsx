@@ -24,11 +24,10 @@ import { CiIndent } from "react-icons/ci";
 import Modal from "@/components/Modal";
 import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 import { IFRAME_TYPE } from "@/constants/iframeConstants";
-import Image from "next/image";
-import ImageViewer from "@/components/ImageViewer";
 import CodeLine from "@/components/CodeLine";
 import { getRandomEmoji } from "@/utils/getRandomEmoji";
 import { convertTime } from "@/utils/time";
+import ImageRenderer from "@/components/ImageRenderer";
 import ReactCodeBlock from "../../../components/ReactCodeBlock";
 import ScrollSpy from "../components/ScrollSpy";
 import FloatDial from "../../../components/FloatDial";
@@ -177,33 +176,7 @@ export default function ArticleDetail({ articleId }: Props) {
       }
       if (domNode.type === "tag" && domNode.name === "img") {
         const { src } = domNode.attribs;
-        return (
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: "12px 0",
-              width: "100%",
-              minHeight: "150px",
-              maxHeight: "500px",
-              aspectRatio: "auto",
-            }}
-            onClick={() => {
-              ImageViewer.open({ url: src });
-            }}
-          >
-            <Image
-              layout="intrinsic"
-              src={src}
-              width={500}
-              height={100}
-              style={{ objectFit: "contain" }}
-              alt=""
-            />
-          </div>
-        );
+        return <ImageRenderer src={src} />;
       }
 
       return domNode; // 변경하지 않을 경우 원래 태그 반환
