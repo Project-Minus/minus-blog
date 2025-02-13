@@ -45,7 +45,7 @@ export default function ArticleDetail({ articleId }: Props) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const { lockScroll, openScroll } = useBodyScrollLock();
   const hasIframe = useMemo(() => {
-    return data?.description?.includes("</iframe>") ?? false;
+    return data?.description ? data.description.includes("</iframe>") : false;
   }, [data?.description]);
 
   const scrollSpy = useRef<Array<{ id: string; tag: string; text: string }>>(
@@ -89,6 +89,7 @@ export default function ArticleDetail({ articleId }: Props) {
         ) {
           iframeUrl = domNode.attribs.src ?? "";
           iframeTitle = domNode.attribs.title ?? "";
+          return null;
         }
       },
     });
@@ -97,26 +98,20 @@ export default function ArticleDetail({ articleId }: Props) {
   };
 
   const handleClickFavorite = () => {
-    if (typeof window !== "undefined") {
-      const favorites = window.localStorage.getItem("favorite");
-      if (!favorites) {
-        const favoriteJSON = JSON.stringify([articleId]);
-        window.localStorage.setItem("favorite", favoriteJSON);
-        setIsFavorite(true);
-        return;
-      }
-      if (favorites.includes(articleId as string)) {
-        const favoriteJSON: Array<string> = JSON.parse(favorites);
-        const removeFavorites = JSON.stringify(
-          [...favoriteJSON].filter((el) => el !== articleId),
-        );
-        window.localStorage.setItem("favorite", removeFavorites);
-        setIsFavorite(false);
-        return;
-      }
-      const favoriteJSON: Array<string> = JSON.parse(favorites);
-      const addFavorites = JSON.stringify([...favoriteJSON, articleId]);
-      window.localStorage.setItem("favorite", addFavorites);
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const favorites = window.localStorage.getItem("favorite");
+    const favoriteList: Array<string> = favorites ? JSON.parse(favorites) : [];
+
+    if (favoriteList.includes(articleId as string)) {
+      const updatedFavorites = favoriteList.filter((el) => el !== articleId);
+      window.localStorage.setItem("favorite", JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+    } else {
+      favoriteList.push(articleId as string);
+      window.localStorage.setItem("favorite", JSON.stringify(favoriteList));
       setIsFavorite(true);
     }
   };
@@ -228,7 +223,7 @@ export default function ArticleDetail({ articleId }: Props) {
       return;
     }
     const { title, url } = getIframeUrl(data.description);
-    if (iframeType === IFRAME_TYPE.popup) {
+    if (iframeType === IFRAME_TYPE.popup && url) {
       if (typeof window !== "undefined") {
         window.open(url, title, "popup=yes");
       }
@@ -248,7 +243,7 @@ export default function ArticleDetail({ articleId }: Props) {
       <div className="infos">
         <div className="info">
           <span>
-            Kyle{randomEmoji} , {convertTime(data.created_at)}
+            Kyle{randomEmoji} , {convertTime(data?.created_at)}
           </span>
           <button
             type="button"
@@ -281,7 +276,7 @@ export default function ArticleDetail({ articleId }: Props) {
           <FloatDial items={dialItems} currentType={iframeType} />
           <Modal
             title={data.title}
-            open={iframeType === "Modal"}
+            open={iframeType === IFRAME_TYPE.modal}
             iframeData={data.description}
             size="dynamic"
             background
