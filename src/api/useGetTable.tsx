@@ -23,6 +23,8 @@ export const useGetTableById = <T extends Database>(
     });
 
   return {
-    data: tableData ? tableData.data?.[0] : { title: "", description: "" },
+    data: tableData
+      ? tableData.data?.[0]
+      : { title: "", description: "", category: "", created_at: new Date() },
   };
 };

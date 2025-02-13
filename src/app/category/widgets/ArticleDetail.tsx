@@ -27,11 +27,13 @@ import { IFRAME_TYPE } from "@/constants/iframeConstants";
 import Image from "next/image";
 import ImageViewer from "@/components/ImageViewer";
 import CodeLine from "@/components/CodeLine";
-import styles from "../../../styles/category.module.scss";
+import { getRandomEmoji } from "@/utils/getRandomEmoji";
+import { convertTime } from "@/utils/time";
 import ReactCodeBlock from "../../../components/ReactCodeBlock";
 import ScrollSpy from "../components/ScrollSpy";
 import FloatDial from "../../../components/FloatDial";
 import IframeWithLoading from "../components/IframeWithLoading";
+import "../../../styles/category.module.scss";
 
 interface Props {
   articleId: string;
@@ -49,7 +51,7 @@ export default function ArticleDetail({ articleId }: Props) {
   const scrollSpy = useRef<Array<{ id: string; tag: string; text: string }>>(
     [],
   );
-  const favoriteClass = isFavorite ? styles.favorite : styles.unFavorite;
+  const favoriteClass = isFavorite ? "favorite" : "unFavorite";
   const dialItems: Array<DialItemType> = [
     {
       name: IFRAME_TYPE.popup,
@@ -129,7 +131,7 @@ export default function ArticleDetail({ articleId }: Props) {
           .childNodes as Array<DOMNode>;
         const nodeInReact = domToReact(element);
         return (
-          <code className={styles.contents_code}>
+          <code className="contents_code">
             <CodeBox dots style={{}}>
               <ReactCodeBlock
                 text={nodeInReact as string}
@@ -233,23 +235,26 @@ export default function ArticleDetail({ articleId }: Props) {
   }, [data.description, iframeType]);
 
   return (
-    <div className={`${styles.category}`}>
+    <div className="category">
       <ScrollSpy scrollList={scrollSpy.current} />
-      <div className={styles.title}>{data?.title}</div>
-      <div className={styles.infos}>
-        <div className={styles.info}>
-          <span>writer name , 6일전</span>
+      <div className="category_intro">{`<${data.category}/>`}</div>
+      <div className="title">{data?.title}</div>
+      <div className="infos">
+        <div className="info">
+          <span>
+            Kyle{getRandomEmoji()} , {convertTime(data.created_at)}
+          </span>
           <button
             type="button"
             className={favoriteClass}
             onClick={handleClickFavorite}
           >
-            좋아요
+            즐겨찾기
           </button>
         </div>
       </div>
       {hasIframe && (
-        <div className={styles.iframeInfo}>
+        <div className="iframeInfo">
           ※ 해당 페이지는 Component Story가 포함되어 있습니다.
           <br />
           전체화면으로 보시기를 권장 드립니다.
@@ -259,7 +264,7 @@ export default function ArticleDetail({ articleId }: Props) {
           popup, modal 에서 Full Docs를 확인하실 수 있습니다.
         </div>
       )}
-      <div className={styles.contents_wrapper}>
+      <div className="contents_wrapper">
         {data?.description &&
           parse(convertPContent(data.description), {
             replace: transform,

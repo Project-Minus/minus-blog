@@ -3,6 +3,10 @@
 .category {
   font-family: inherit;
   position: relative;
+  .category_intro {
+    font-size: 14px;
+    color: var(--opacityFore7);
+  }
   .scroll_spy {
     position: fixed;
     top: 130px;
@@ -31,20 +35,20 @@
     font-weight: bold;
   }
   .favorite {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
-    padding: 10px 25px;
-    border: 3px solid var(--pointColor);
+    padding: 8px 12px;
+    border: 2px solid var(--pointColor);
     border-radius: 30px;
     background-color: var(--pointColor);
     cursor: pointer;
     transition: all 0.25s;
   }
   .unFavorite {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
-    padding: 10px 25px;
-    border: 3px solid var(--pointColor);
+    padding: 8px 12px;
+    border: 2px solid var(--pointColor);
     color: var(--pointColor);
     border-radius: 30px;
     background-color: transparent;
@@ -53,11 +57,14 @@
   }
   .infos {
     .info {
+      font-size: 12px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      gap: 10px;
     }
     padding: 12px 0;
+    border-bottom: 1px solid var(--opacityFore7);
   }
   .iframeInfo {
     position: relative;
