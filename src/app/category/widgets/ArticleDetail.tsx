@@ -184,7 +184,7 @@ export default function ArticleDetail({ articleId }: Props) {
         const { src } = domNode.attribs;
         return (
           <div
-            style={{ position: "relative", width: "100%", height: "500px" }}
+            style={{ position: "relative", width: "100%" }}
             onClick={() => {
               ImageViewer.open({ url: src });
             }}
