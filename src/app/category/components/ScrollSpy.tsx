@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../../../styles/category.module.scss";
+import "../../../styles/category.scss";
 
 interface Props {
   scrollList: Array<{ id: string; tag: string; text: string }>;
@@ -30,11 +30,11 @@ export default function ScrollSpy(props: Props) {
     }
   };
   return (
-    <div className={styles.scroll_spy}>
+    <div className="scroll_spy">
       {scrollList?.map(({ id, tag, text }) => {
         return (
           <div
-            className={styles.scroll_tags}
+            className="scroll_tags"
             style={{
               marginLeft: leftGap(tag),
             }}

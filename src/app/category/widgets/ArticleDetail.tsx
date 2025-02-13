@@ -33,7 +33,7 @@ import ReactCodeBlock from "../../../components/ReactCodeBlock";
 import ScrollSpy from "../components/ScrollSpy";
 import FloatDial from "../../../components/FloatDial";
 import IframeWithLoading from "../components/IframeWithLoading";
-import "../../../styles/category.module.scss";
+import "../../../styles/category.scss";
 
 interface Props {
   articleId: string;
