@@ -179,12 +179,29 @@ export default function ArticleDetail({ articleId }: Props) {
         const { src } = domNode.attribs;
         return (
           <div
-            style={{ position: "relative", width: "100%" }}
+            style={{
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "12px 0",
+              width: "100%",
+              minHeight: "150px",
+              maxHeight: "500px",
+              aspectRatio: "auto",
+            }}
             onClick={() => {
               ImageViewer.open({ url: src });
             }}
           >
-            <Image src={src} fill style={{ objectFit: "contain" }} alt="" />
+            <Image
+              layout="intrinsic"
+              src={src}
+              width={500}
+              height={100}
+              style={{ objectFit: "contain" }}
+              alt=""
+            />
           </div>
         );
       }

@@ -1,6 +1,6 @@
 @use "./mixin.scss" as *;
 .mainBox {
-  width: 100%;
+  width: 80%;
 }
 .mainLink {
   display: flex;
@@ -16,6 +16,7 @@
   font-size: 26px;
   font-weight: bold;
   padding-inline: 5%;
+  @include ellipsisSingleLine;
 }
 .mainDesc {
   width: 100%;
