@@ -16,24 +16,22 @@
     left: 50px;
     display: flex;
     flex-direction: column;
-    padding: 0px 5px;
+    gap: 8px;
+    padding: 8px;
+    border-left: 2px solid var(--opacityFore3);
   }
   .scroll_tags {
     max-width: calc((100vw - 1000px) / 2);
-    padding: 5px 0px;
     display: flex;
-    border-left: 2px solid var(--opacityFore3);
     font-weight: normal;
     cursor: pointer;
     transition: all 0.5s;
     &:hover {
-      border-left: 2px solid var(--pointColor);
       color: var(--pointColor);
     }
   }
   .title {
-    margin: 20px 0px 0px;
-    padding: 20px 0px;
+    padding: 20px 0px 10px;
     text-align: center;
     font-size: 48px;
     font-weight: bold;
