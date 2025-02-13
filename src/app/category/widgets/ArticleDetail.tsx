@@ -239,7 +239,10 @@ export default function ArticleDetail({ articleId }: Props) {
     <div className="category">
       <ScrollSpy scrollList={scrollSpy.current} />
       <div className="category_intro">
-        <CodeLine content={`<${data.category}/>`} />
+        <CodeLine
+          content={`<${data.category}/>`}
+          style={{ boxShadow: "0px 0px 4px rgba(0,0,0,0.2)" }}
+        />
       </div>
       <div className="title">{data?.title}</div>
       <div className="infos">

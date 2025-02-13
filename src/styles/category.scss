@@ -6,7 +6,7 @@
   .category_intro {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 60px;
   }
   .scroll_spy {
     position: fixed;
@@ -17,6 +17,7 @@
     gap: 8px;
     padding: 8px;
     border-left: 2px solid var(--opacityFore3);
+    color: var(--opacityFore9);
   }
   .scroll_tags {
     max-width: calc((100vw - 1000px) / 2);
@@ -104,7 +105,7 @@
   .contents_wrapper {
     width: 100%;
     line-height: 1.5;
-    color: var(--opacityFore8);
+    color: var(--opacityFore9);
     h1,
     h2,
     h3,
@@ -122,6 +123,14 @@
       span {
         @include scrollbar();
       }
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--foreground);
     }
     h1 {
       font-size: 26px;
