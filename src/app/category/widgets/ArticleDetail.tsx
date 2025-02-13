@@ -51,6 +51,7 @@ export default function ArticleDetail({ articleId }: Props) {
   const scrollSpy = useRef<Array<{ id: string; tag: string; text: string }>>(
     [],
   );
+  const randomEmoji = getRandomEmoji();
   const favoriteClass = isFavorite ? "favorite" : "unFavorite";
   const dialItems: Array<DialItemType> = [
     {
@@ -242,7 +243,7 @@ export default function ArticleDetail({ articleId }: Props) {
       <div className="infos">
         <div className="info">
           <span>
-            Kyle{getRandomEmoji()} , {convertTime(data.created_at)}
+            Kyle{randomEmoji} , {convertTime(data.created_at)}
           </span>
           <button
             type="button"
