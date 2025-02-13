@@ -1,6 +1,6 @@
 @use "./mixin.scss" as *;
 .mainBox {
-  width: 80%;
+  width: 70%;
 }
 .mainLink {
   display: flex;
@@ -15,7 +15,6 @@
 .mainTitle {
   font-size: 26px;
   font-weight: bold;
-  padding-inline: 5%;
   @include ellipsisSingleLine;
 }
 .mainDesc {
@@ -26,7 +25,6 @@
   color: var(--opacityFore7);
   @include ellipsisMultiLine();
   -webkit-line-clamp: 4;
-  padding-inline: 5%;
 }
 .mainTime {
   font-size: 12px;
