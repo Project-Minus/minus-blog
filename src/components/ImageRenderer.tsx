@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ImageViewer from "./ImageViewer";
-import "../styles/imgaeRenderer.scss";
+import "../styles/imageRenderer.scss";
 
 interface Props {
   src: string;
