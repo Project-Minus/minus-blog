@@ -28,11 +28,12 @@ import CodeLine from "@/components/CodeLine";
 import { getRandomEmoji } from "@/utils/getRandomEmoji";
 import { convertTime } from "@/utils/time";
 import ImageRenderer from "@/components/ImageRenderer";
-import ReactCodeBlock from "../../../components/ReactCodeBlock";
-import ScrollSpy from "../components/ScrollSpy";
-import FloatDial from "../../../components/FloatDial";
-import IframeWithLoading from "../components/IframeWithLoading";
-import "../../../styles/category.scss";
+import ReactCodeBlock from "@/components/ReactCodeBlock";
+import FloatDial from "@/components/FloatDial";
+import CommnetField from "@/components/CommentField";
+import ScrollSpy from "@category/components/ScrollSpy";
+import IframeWithLoading from "@category/components/IframeWithLoading";
+import "@/styles/category.scss";
 
 interface Props {
   articleId: string;
@@ -260,6 +261,9 @@ export default function ArticleDetail({ articleId }: Props) {
           parse(convertPContent(data.description), {
             replace: transform,
           })}
+      </div>
+      <div>
+        <CommnetField />
       </div>
       {hasIframe && (
         <>

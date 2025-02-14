@@ -138,7 +138,6 @@ export default function ImageViewer({ url, closeViewer }: Props) {
 
         // zoom에 따른 이동속도 보정치
         const zoomCorrection = 1 / Math.abs(imageScale.X);
-        console.log(zoomCorrection);
         // flip 여부에 따른 보정치
         const sameBothScale = imageScale.X * imageScale.Y;
         const reverseSameBothScale = imageScale.X * imageScale.Y * -1;

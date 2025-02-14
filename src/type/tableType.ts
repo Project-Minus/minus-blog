@@ -22,6 +22,17 @@ export interface User {
   created_at: Date;
 }
 
+export interface Comment {
+  id: string;
+  articleId: string;
+  parentId: string;
+  depth: number;
+  name: string;
+  isSecret: boolean;
+  secretKey: string;
+  created_at: Date;
+}
+
 export type Database = Article | Category | User;
 
 export type DatabaseName = "article" | "category" | "user";

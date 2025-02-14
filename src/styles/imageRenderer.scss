@@ -10,17 +10,21 @@
   aspect-ratio: auto;
   cursor: pointer;
   &::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
     content: "View";
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.3s;
   }
   &:hover {
     &::before {
+      color: rgba(255, 255, 255, 1);
       background-color: rgba(0, 0, 0, 0.5);
     }
   }
