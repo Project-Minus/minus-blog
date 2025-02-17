@@ -4,7 +4,7 @@ import "./globals.css";
 import "./reset.css";
 import "../styles/carouselBase.css";
 import ReactQueryProviders from "@/api/ReactQueryProvider";
-import "../styles/layout.module.scss";
+import "../styles/layout.scss";
 import AppHeader from "./components/AppHeader";
 import "../styles/globals.css";
 import AppFooter from "./components/AppFooter";

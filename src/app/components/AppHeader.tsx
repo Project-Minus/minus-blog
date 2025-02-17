@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { CSSProperties, useEffect, useMemo, useState } from "react";
-import styles from "../../styles/layout.module.scss";
+import "../../styles/layout.scss";
 import logo from "../../../public/minus.png";
 
 export default function AppHeader() {
@@ -54,7 +54,7 @@ export default function AppHeader() {
     };
   }, [colorScheme]);
   return (
-    <header className={styles.header} style={scroll}>
+    <header className="header" style={scroll}>
       <div>
         <Image src={logo} alt="" />
       </div>
