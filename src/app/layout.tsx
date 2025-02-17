@@ -4,7 +4,7 @@ import "./globals.css";
 import "./reset.css";
 import "../styles/carouselBase.css";
 import ReactQueryProviders from "@/api/ReactQueryProvider";
-import styles from "../styles/layout.module.scss";
+import "../styles/layout.module.scss";
 import AppHeader from "./components/AppHeader";
 import "../styles/globals.css";
 import AppFooter from "./components/AppFooter";
@@ -44,7 +44,7 @@ export default function RootLayout({
       <body className={`${basicFont.className}`}>
         <AppHeader />
         <ReactQueryProviders>
-          <div className={styles.wrapper}>{children}</div>
+          <div className="wrapper">{children}</div>
         </ReactQueryProviders>
         <AppFooter />
         <div id="modal-root" />
