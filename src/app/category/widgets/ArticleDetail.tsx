@@ -259,7 +259,7 @@ export default function ArticleDetail({ articleId }: Props) {
           })}
       </div>
       <div>
-        <CommnetField />
+        <CommnetField articleId={articleId} />
       </div>
       {hasIframe && (
         <>

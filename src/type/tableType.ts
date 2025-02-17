@@ -33,6 +33,6 @@ export interface Comment {
   created_at: Date;
 }
 
-export type Database = Article | Category | User;
+export type Database = Article | Category | User | Comment;
 
 export type DatabaseName = "article" | "category" | "user";

@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { Database } from "@/type/tableType";
+import { Comment, Database } from "@/type/tableType";
 import { getAllTable, filterEqualTable } from "./init";
 
 export const useGetTable = <T extends Database>(tableName: string) => {
@@ -27,4 +27,17 @@ export const useGetTableById = <T extends Database>(
       ? tableData.data?.[0]
       : { title: "", description: "", category: "", created_at: new Date() },
   };
+};
+
+export const useGetCommentByArticleId = (articleId: string) => {
+  const { data: tableData }: UseQueryResult<{ data: Array<Comment> }, Error> =
+    useQuery({
+      queryKey: ["comment", articleId],
+      queryFn: () =>
+        filterEqualTable("comment", "articleId", articleId).catch(
+          console.error,
+        ),
+    });
+
+  return { data: tableData ? tableData.data : [] };
 };

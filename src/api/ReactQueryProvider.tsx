@@ -21,7 +21,9 @@ function getQueryClient() {
     return makeQueryClient();
   }
   // Browser일 경우 QueryClient 유무 확인 후 없을 시 생성
-  if (!browserQueryClient) browserQueryClient = makeQueryClient();
+  if (!browserQueryClient) {
+    browserQueryClient = makeQueryClient();
+  }
   return browserQueryClient;
 }
 

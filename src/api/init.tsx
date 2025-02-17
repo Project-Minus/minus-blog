@@ -93,3 +93,26 @@ export const filterContainArrayTable = async (
 
   return { data, error };
 };
+
+// 전체 생성 api (post)
+export const postTableRow = async (tableName: string, postData: unknown) => {
+  const { data, error } = await supabase
+    .from(tableName)
+    .insert(postData)
+    .select();
+  return { data, error };
+};
+
+// 특정 값만 update (put)
+export const updateTableRowById = async (
+  tableName: string,
+  updateData: unknown,
+  rowId: string,
+) => {
+  const { data, error } = await supabase
+    .from(tableName)
+    .update(updateData)
+    .eq("id", rowId)
+    .select();
+  return { data, error };
+};

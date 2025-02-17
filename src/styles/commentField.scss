@@ -28,7 +28,6 @@
     }
   }
   .input_wrapper {
-    width: calc(100% - 70px);
     .input_fields {
       display: flex;
       justify-content: space-between;
@@ -45,8 +44,5 @@
         }
       }
     }
-  }
-  .comment_divider {
-    border-bottom: 1px solid var(--opacityFore4);
   }
 }
