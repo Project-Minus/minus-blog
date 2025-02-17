@@ -1,8 +1,52 @@
 .comment_field {
+  margin-top: 60px;
   width: 100%;
   textarea {
     width: 100%;
-    border: none;
+    background-color: var(--background);
+    border: 1px solid var(--opacityFore4);
     resize: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  .profile_wrapper {
+    display: flex;
+    justify-content: space-between;
+    .profile_box {
+      width: 56px;
+    }
+    .profile_emoji {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 56px;
+      height: 56px;
+      background-color: var(--foreground);
+      border-radius: 30px;
+      font-size: 36px;
+    }
+  }
+  .input_wrapper {
+    width: calc(100% - 70px);
+    .input_fields {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      input {
+        width: 50%;
+        padding: 12px 16px;
+        background-color: var(--background);
+        border: 1px solid var(--opacityFore4);
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  .comment_divider {
+    border-bottom: 1px solid var(--opacityFore4);
   }
 }

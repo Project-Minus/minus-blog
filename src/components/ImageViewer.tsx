@@ -11,7 +11,7 @@ import {
   CgCornerUpLeft,
   CgCornerUpRight,
 } from "react-icons/cg";
-import { LuZoomIn, LuZoomOut } from "react-icons/lu";
+import { AiOutlineZoomIn, AiOutlineZoomOut } from "react-icons/ai";
 import { useEffect, useRef, useState } from "react";
 import { produce } from "immer";
 import useBodyScrollLock from "@/hooks/useBodyScrollLock";
@@ -303,14 +303,14 @@ export default function ImageViewer({ url, closeViewer }: Props) {
           }}
           className="icon"
         />
-        <LuZoomIn
+        <AiOutlineZoomIn
           className="icon"
           onClick={() => {
             handleZoom("zoomIn");
           }}
           style={{ ...getZoomBlockStyle(zoomBlock.zoomIn) }}
         />
-        <LuZoomOut
+        <AiOutlineZoomOut
           className="icon"
           onClick={() => {
             handleZoom("zoomOut");

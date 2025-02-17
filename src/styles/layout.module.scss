@@ -1,3 +1,4 @@
+@use "./mixin.scss" as *;
 .header {
   position: sticky;
   top: 0;
@@ -31,6 +32,13 @@
     max-width: 700px;
     height: 100%;
     margin: 0 auto;
+  }
+}
+
+body {
+  @include scrollbar();
+  * {
+    @include scrollbar();
   }
 }
 

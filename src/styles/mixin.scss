@@ -126,30 +126,30 @@
     background-color: rgba(157, 165, 171, 1);
   }
   &::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 10px;
+    height: 10px;
   }
   &::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: var(--background);
   }
   &::-webkit-scrollbar-thumb {
     width: 10px;
     border-radius: 50px;
-    background-color: rgba(161, 161, 161, 1);
+    background-color: var(--foreground);
   }
   &::-webkit-scrollbar-button {
     display: none;
     &:vertical:start:decrement {
       display: block;
-      height: 10px;
+      height: 0px;
     }
     &:vertical:start:increment {
       display: block;
-      height: 10px;
+      height: 0px;
     }
     &:vertical:end:decrement {
       display: block;
-      height: 10px;
+      height: 0px;
     }
   }
 }

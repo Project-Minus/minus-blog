@@ -20,12 +20,11 @@ import {
 import { convertPContent } from "@/utils/convertTag";
 import { DialItemType } from "@/type/dial";
 import { BiArea, BiWindow } from "react-icons/bi";
-import { CiIndent } from "react-icons/ci";
+import { AiOutlinePicRight } from "react-icons/ai";
 import Modal from "@/components/Modal";
 import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 import { IFRAME_TYPE } from "@/constants/iframeConstants";
 import CodeLine from "@/components/CodeLine";
-import { getRandomEmoji } from "@/utils/getRandomEmoji";
 import { convertTime } from "@/utils/time";
 import ImageRenderer from "@/components/ImageRenderer";
 import ReactCodeBlock from "@/components/ReactCodeBlock";
@@ -51,7 +50,6 @@ export default function ArticleDetail({ articleId }: Props) {
   const scrollSpy = useRef<Array<{ id: string; tag: string; text: string }>>(
     [],
   );
-  const randomEmoji = getRandomEmoji();
   const favoriteClass = isFavorite ? "favorite" : "unFavorite";
   const dialItems: Array<DialItemType> = [
     {
@@ -70,7 +68,7 @@ export default function ArticleDetail({ articleId }: Props) {
     },
     {
       name: IFRAME_TYPE.inDocs,
-      icon: <CiIndent size={24} />,
+      icon: <AiOutlinePicRight size={24} />,
       onClick: () => {
         setIframeType(IFRAME_TYPE.inDocs);
       },
@@ -233,9 +231,7 @@ export default function ArticleDetail({ articleId }: Props) {
       <div className="title">{data?.title}</div>
       <div className="infos">
         <div className="info">
-          <span>
-            Kyle{randomEmoji} , {convertTime(data?.created_at)}
-          </span>
+          <span>Kyle , {convertTime(data?.created_at)}</span>
           <button
             type="button"
             className={favoriteClass}
