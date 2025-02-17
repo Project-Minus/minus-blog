@@ -61,7 +61,7 @@ export default function CommnetField(props: Props) {
       icon: randomEmoji,
       isSecret,
       name: inputValues.name,
-      secretKey: inputValues,
+      secretKey: inputValues.secretKey,
     };
     await postTableRow("comment", newComment);
     queryClient.invalidateQueries({
@@ -72,15 +72,17 @@ export default function CommnetField(props: Props) {
 
   return (
     <div className="comment_field">
-      <div>
+      <div className="comment_upper">
         <span>댓글 0개</span>
         <button
+          className="comment_button"
           type="button"
           onClick={() => {
             copyToClipboard();
           }}
+          style={{ width: 120 }}
         >
-          <AiOutlineUpload />
+          글 공유하기 <AiOutlineUpload />
         </button>
       </div>
       <div className="profile_wrapper">
@@ -105,15 +107,16 @@ export default function CommnetField(props: Props) {
             <input
               name="secretKey"
               type="text"
-              placeholder="비밀번호"
+              placeholder="확인용 번호(수정, 삭제시 필수)"
               onChange={changeInputValues}
             />
           </div>
           <textarea rows={5} />
         </div>
       </div>
-      <div>
+      <div className="comment_lower">
         <button
+          className={`lock_button${isSecret ? "" : " locked"}`}
           type="button"
           onClick={() => {
             setIsSecret((prev) => !prev);
@@ -121,7 +124,12 @@ export default function CommnetField(props: Props) {
         >
           {isSecret ? <AiOutlineLock /> : <AiOutlineUnlock />}
         </button>
-        <button type="button" onClick={handleSubmitComment}>
+        <button
+          className="comment_button"
+          type="button"
+          onClick={handleSubmitComment}
+          style={{ fontSize: 16 }}
+        >
           제출
         </button>
       </div>

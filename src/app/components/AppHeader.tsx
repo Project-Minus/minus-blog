@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { CSSProperties, useEffect, useMemo, useState } from "react";
 import "../../styles/layout.scss";
+import Link from "next/link";
 import logo from "../../../public/minus.png";
 
 export default function AppHeader() {
@@ -56,7 +57,9 @@ export default function AppHeader() {
   return (
     <header className="header" style={scroll}>
       <div>
-        <Image src={logo} alt="" />
+        <Link href="/">
+          <Image src={logo} alt="" />
+        </Link>
       </div>
     </header>
   );
