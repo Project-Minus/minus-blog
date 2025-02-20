@@ -1,7 +1,25 @@
+.comment_reply {
+  position: absolute;
+  width: 5px;
+  background-color: red;
+}
 .comment_view {
+  position: relative;
   padding: 20px 0;
+  margin-left: auto;
   width: 100%;
   border-bottom: 1px solid var(--opacityFore1);
+  &.has_depth {
+    &::before {
+      content: "Re: ";
+      position: absolute;
+      top: 15px;
+      left: -25px;
+      display: inline-block;
+      font-size: 12px;
+      color: var(--opacityFore4);
+    }
+  }
   .profile_wrapper {
     display: flex;
     justify-content: space-between;

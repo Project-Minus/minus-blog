@@ -1,12 +1,20 @@
 .comment_field {
-  margin-top: 60px;
-  width: 100%;
+  padding-top: 20px;
   padding-bottom: 20px;
+  width: 100%;
   border-bottom: 2px solid var(--opacityFore1);
   .comment_upper {
+    margin-top: 40px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+  }
+  .comment_reset {
+    margin: 0 0 10px auto;
+    width: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
   }
   .comment_button {
     display: flex;

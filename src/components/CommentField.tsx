@@ -17,7 +17,9 @@ interface Props {
   depth?: number;
   parentId?: string;
   comment?: Comment;
-  changeUpdateMode?: (id: string) => void;
+  totalComments?: number;
+  changeUpdateId?: (id: string) => void;
+  changeReplyId?: (id: string) => void;
 }
 
 export default function CommnetField(props: Props) {
@@ -25,8 +27,10 @@ export default function CommnetField(props: Props) {
     articleId,
     depth = 0,
     parentId = "",
+    totalComments = 0,
     comment,
-    changeUpdateMode = () => {},
+    changeUpdateId = () => {},
+    changeReplyId = () => {},
   } = props;
   const queryClient = useQueryClient();
   const location = usePathname();
@@ -57,6 +61,13 @@ export default function CommnetField(props: Props) {
     return { width: `calc(100% - ${widthWithDepth + 70}px)` };
   };
 
+  const getTextareaPlaceholder = () => {
+    if (totalComments > 9) {
+      return "죄송합니다 ㅠㅠ 이렇게 인기 많을 줄 모르고 최대 10개만 작성 가능하도록 하였네요... 요금 늘려서 올게요 ㅠㅠ";
+    }
+    return "최대 200자";
+  };
+
   const changeInputValues = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInputValues(
@@ -69,6 +80,11 @@ export default function CommnetField(props: Props) {
   const changeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
     setCommentContent(value);
+  };
+
+  const clickReset = () => {
+    changeUpdateId("");
+    changeReplyId("");
   };
 
   const handleSubmitComment = async () => {
@@ -85,6 +101,19 @@ export default function CommnetField(props: Props) {
       return;
     }
 
+    if (comment) {
+      const newComment: Partial<Comment> = {
+        articleId,
+        isSecret,
+        icon: randomEmoji,
+        name: inputValues.name,
+        secretKey: inputValues.secretKey,
+        content: commentContent,
+      };
+      await updateComment({ ...newComment, id: comment.id }, queryClient);
+      changeUpdateId("");
+      return;
+    }
     const newComment: Partial<Comment> = {
       articleId,
       depth,
@@ -95,13 +124,11 @@ export default function CommnetField(props: Props) {
       secretKey: inputValues.secretKey,
       content: commentContent,
     };
-    if (comment) {
-      await updateComment({ ...newComment, id: comment.id }, queryClient);
-      changeUpdateMode("");
+    await postComment(newComment, queryClient);
+    if (parentId) {
+      changeReplyId("");
       return;
     }
-    await postComment(newComment, queryClient);
-
     setInputValues({
       name: "",
       secretKey: "",
@@ -111,19 +138,20 @@ export default function CommnetField(props: Props) {
 
   useEffect(() => {
     if (comment) {
-      const { name, secretKey, content } = comment;
+      const { name, secretKey, content, isSecret: CommentSecret } = comment;
       setInputValues({
         name,
         secretKey,
       });
       setCommentContent(content);
+      setIsSecret(CommentSecret);
     }
   }, [comment]);
   return (
     <div className="comment_field">
-      {!comment && (
+      {!comment && !parentId ? (
         <div className="comment_upper">
-          <span>댓글 0개</span>
+          <span>댓글 {totalComments}개</span>
           <button
             className="comment_button"
             type="button"
@@ -134,6 +162,10 @@ export default function CommnetField(props: Props) {
           >
             글 공유하기 <AiOutlineUpload />
           </button>
+        </div>
+      ) : (
+        <div className="comment_reset" onClick={clickReset}>
+          돌아가기
         </div>
       )}
       <div className="profile_wrapper">
@@ -156,6 +188,7 @@ export default function CommnetField(props: Props) {
               value={inputValues.name}
               onChange={changeInputValues}
               maxLength={8}
+              disabled={totalComments > 9}
             />
             <input
               name="secretKey"
@@ -164,14 +197,16 @@ export default function CommnetField(props: Props) {
               value={inputValues.secretKey}
               onChange={changeInputValues}
               maxLength={8}
+              disabled={totalComments > 9}
             />
           </div>
           <textarea
             rows={5}
-            placeholder="최대 200자"
+            placeholder={getTextareaPlaceholder()}
             value={commentContent}
             onChange={changeContent}
             maxLength={200}
+            disabled={totalComments > 9}
           />
         </div>
       </div>
@@ -190,6 +225,7 @@ export default function CommnetField(props: Props) {
           type="button"
           onClick={handleSubmitComment}
           style={{ fontSize: 16 }}
+          disabled={totalComments > 9}
         >
           제출
         </button>

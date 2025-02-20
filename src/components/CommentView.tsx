@@ -5,17 +5,22 @@ import dayjs from "dayjs";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useModifyComment } from "@/hooks/useModifyComment";
 import { useQueryClient } from "@tanstack/react-query";
+import CommnetField from "./CommentField";
 
 interface Props {
   articleId: string;
   comment: Comment;
-  changeUpdateMode: (id: string) => void;
+  replyCommentId: string;
+  changeUpdateId: (id: string) => void;
+  changeReplyId: (id: string) => void;
 }
 
 export default function CommentView({
   articleId,
   comment,
-  changeUpdateMode,
+  replyCommentId,
+  changeUpdateId,
+  changeReplyId,
 }: Props) {
   const {
     id,
@@ -34,7 +39,7 @@ export default function CommentView({
   const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
   const masterKey = process.env.NEXT_PUBLIC_COMMENT_MASTER_KEY;
   const createdAtTime = dayjs(createdAt).format("YYYY.MM.DD HH:mm");
-
+  const depthClass = depth > 0 ? " has_depth" : "";
   const displayContent = (): { content: string; className: string } => {
     if (deleted) {
       return {
@@ -75,55 +80,75 @@ export default function CommentView({
     await deleteComment(articleId, id, queryClient);
   };
   return (
-    <div className="comment_view" style={{ ...getViewWidth() }}>
-      <div className="profile_wrapper">
-        <div className="profile_box">
-          <div suppressHydrationWarning className="profile_emoji">
-            {icon}
+    <>
+      <div
+        className={`comment_view${depthClass}`}
+        style={{ ...getViewWidth() }}
+      >
+        <div className="profile_wrapper">
+          <div className="profile_box">
+            <div suppressHydrationWarning className="profile_emoji">
+              {icon}
+            </div>
           </div>
-        </div>
-        <div className="content_wrapper">
-          <div className="content_fields">
-            <div className="content_name">{name}</div>
-            {isConfirmed && !deleted && (
-              <div className="content_modify">
-                <div
-                  onClick={() => {
-                    changeUpdateMode(id);
-                  }}
-                >
-                  수정하기
+          <div className="content_wrapper">
+            <div className="content_fields">
+              <div className="content_name">{name}</div>
+              {isConfirmed && !deleted && (
+                <div className="content_modify">
+                  <div
+                    onClick={() => {
+                      changeUpdateId(id);
+                    }}
+                  >
+                    수정하기
+                  </div>
+                  <div onClick={clickDeleteComment}>삭제하기</div>
                 </div>
-                <div onClick={clickDeleteComment}>삭제하기</div>
+              )}
+              {!isConfirmed && !deleted && (
+                <div className="content_confirm">
+                  <input
+                    type="text"
+                    placeholder="번호 인증"
+                    onChange={changeConfirmKey}
+                    onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                      if (e.key === "Enter") {
+                        changeConfirmed();
+                      }
+                    }}
+                  />
+                  <button type="button" onClick={changeConfirmed}>
+                    인증
+                  </button>
+                </div>
+              )}
+            </div>
+            <div className={`content_text${displayContent().className}`}>
+              {displayContent().content}
+            </div>
+            <div className="content_underline">
+              <div className="content_time">{createdAtTime}</div>
+              <div
+                className="content_reply"
+                onClick={() => {
+                  changeReplyId(id);
+                }}
+              >
+                답글쓰기
               </div>
-            )}
-            {!isConfirmed && !deleted && (
-              <div className="content_confirm">
-                <input
-                  type="text"
-                  placeholder="번호 인증"
-                  onChange={changeConfirmKey}
-                  onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
-                    if (e.key === "Enter") {
-                      changeConfirmed();
-                    }
-                  }}
-                />
-                <button type="button" onClick={changeConfirmed}>
-                  인증
-                </button>
-              </div>
-            )}
-          </div>
-          <div className={`content_text${displayContent().className}`}>
-            {displayContent().content}
-          </div>
-          <div className="content_underline">
-            <div className="content_time">{createdAtTime}</div>
-            <div className="content_reply">답글쓰기</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      {replyCommentId === id && (
+        <CommnetField
+          articleId={articleId}
+          depth={depth + 1}
+          parentId={id}
+          changeReplyId={changeReplyId}
+        />
+      )}
+    </>
   );
 }
