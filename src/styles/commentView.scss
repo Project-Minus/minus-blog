@@ -1,0 +1,94 @@
+.comment_view {
+  padding: 20px 0;
+  width: 100%;
+  border-bottom: 1px solid var(--opacityFore1);
+  .profile_wrapper {
+    display: flex;
+    justify-content: space-between;
+    .profile_box {
+      width: 48px;
+    }
+    .profile_emoji {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      background-color: var(--foreground);
+      border-radius: 30px;
+      font-size: 28px;
+    }
+  }
+  .content_wrapper {
+    width: calc(100% - 70px);
+    .content_fields {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+
+      .content_name {
+        padding: 12px 0px;
+        background-color: var(--background);
+        border: 1px solid rgba(0, 0, 0, 0);
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .content_modify {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        > div {
+          font-size: 12px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+      .content_confirm {
+        border-bottom: 1px solid var(--opacityFore1);
+        input {
+          width: 120px;
+          padding: 8px 4px;
+          background-color: var(--background);
+          border: none;
+          &:focus {
+            outline: none;
+          }
+        }
+        button {
+          padding: 2px;
+          border: none;
+          background-color: var(--background);
+          cursor: pointer;
+        }
+      }
+    }
+    .content_text {
+      width: 100%;
+      background-color: var(--background);
+      border: 1px solid rgba(0, 0, 0, 0);
+      padding-bottom: 16px;
+      line-height: 1.4;
+      &.deleted {
+        color: var(--opacityFore4);
+      }
+      &.secret {
+        color: var(--opacitySub9);
+      }
+    }
+    .content_underline {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      .content_time {
+        font-size: 12px;
+      }
+      .content_reply {
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+  }
+}

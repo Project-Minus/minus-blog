@@ -114,5 +114,6 @@ export const updateTableRowById = async (
     .update(updateData)
     .eq("id", rowId)
     .select();
+
   return { data, error };
 };

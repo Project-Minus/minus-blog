@@ -28,9 +28,12 @@ export interface Comment {
   parentId: string;
   depth: number;
   name: string;
+  icon: string;
   isSecret: boolean;
   secretKey: string;
+  content: string;
   created_at: Date;
+  deleted: boolean;
 }
 
 export type Database = Article | Category | User | Comment;
