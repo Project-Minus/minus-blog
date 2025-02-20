@@ -139,29 +139,30 @@ export default function ImageViewer({ url, closeViewer }: Props) {
         // zoom에 따른 이동속도 보정치
         const zoomCorrection = 1 / Math.abs(imageScale.X);
         // flip 여부에 따른 보정치
-        const sameBothScale = imageScale.X * imageScale.Y;
-        const reverseSameBothScale = imageScale.X * imageScale.Y * -1;
-
+        const sameBothScale = imageScale.X * imageScale.Y > 0 ? 1 : -1;
+        const reverseSameBothScale = sameBothScale * -1;
+        console.log(sameBothScale, reverseSameBothScale);
         // 이동값 계산기
         const getTranslatePosition = (
           originAxis: Axis,
           translateAxis: Axis,
+          zoomCorrectionNum: number,
           correction: number,
         ) => {
           // originAxis : 기본 기준 축 , translateAxis: flip, rotate에 따라 변경된 축, correction: 보정치
           if (translateAxis === "X") {
             return (
               imageTranslate[originAxis] +
-              deltaX * reverseScaleX * zoomCorrection * correction
+              deltaX * reverseScaleX * zoomCorrectionNum * correction
             );
           }
           return (
             imageTranslate[originAxis] +
-            deltaY * reverseScaleY * zoomCorrection * correction
+            deltaY * reverseScaleY * zoomCorrectionNum * correction
           );
         };
-        let translateX = getTranslatePosition("X", "X", 1);
-        let translateY = getTranslatePosition("Y", "Y", 1);
+        let translateX = getTranslatePosition("X", "X", zoomCorrection, 1);
+        let translateY = getTranslatePosition("Y", "Y", zoomCorrection, 1);
 
         // 좌우 회전 확인
         const reverseRotate = rotateLeftAndRight > 0 ? 1 : -1;
@@ -176,21 +177,61 @@ export default function ImageViewer({ url, closeViewer }: Props) {
 
         // 회전량에 따른 보정치 적용
         if (rotateNum === 1) {
-          translateX = getTranslatePosition("X", "Y", sameBothScale);
-          translateY = getTranslatePosition("Y", "X", reverseSameBothScale);
+          translateX = getTranslatePosition(
+            "X",
+            "Y",
+            zoomCorrection,
+            sameBothScale,
+          );
+          translateY = getTranslatePosition(
+            "Y",
+            "X",
+            zoomCorrection,
+            reverseSameBothScale,
+          );
         }
         if (rotateNum === 2) {
           if (sameBothScale > 0) {
-            translateX = getTranslatePosition("X", "X", reverseSameBothScale);
-            translateY = getTranslatePosition("Y", "Y", reverseSameBothScale);
+            translateX = getTranslatePosition(
+              "X",
+              "X",
+              zoomCorrection,
+              reverseSameBothScale,
+            );
+            translateY = getTranslatePosition(
+              "Y",
+              "Y",
+              zoomCorrection,
+              reverseSameBothScale,
+            );
           } else {
-            translateX = getTranslatePosition("X", "X", sameBothScale);
-            translateY = getTranslatePosition("Y", "Y", sameBothScale);
+            translateX = getTranslatePosition(
+              "X",
+              "X",
+              zoomCorrection,
+              sameBothScale,
+            );
+            translateY = getTranslatePosition(
+              "Y",
+              "Y",
+              zoomCorrection,
+              sameBothScale,
+            );
           }
         }
         if (rotateNum === 3) {
-          translateX = getTranslatePosition("X", "Y", reverseSameBothScale);
-          translateY = getTranslatePosition("Y", "X", sameBothScale);
+          translateX = getTranslatePosition(
+            "X",
+            "Y",
+            zoomCorrection,
+            reverseSameBothScale,
+          );
+          translateY = getTranslatePosition(
+            "Y",
+            "X",
+            zoomCorrection,
+            sameBothScale,
+          );
         }
 
         requestAnimationFrame(() => {

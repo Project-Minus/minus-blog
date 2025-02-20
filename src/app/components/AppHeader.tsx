@@ -13,19 +13,22 @@ export default function AppHeader() {
       const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (isDark) {
         return {
-          backgroundColor: "rgba(10,10,10,0.6)",
+          backgroundColor: "rgba(10,10,10,0.7)",
           color: "#ededed",
+          borderBottom: "rgba(28, 32, 36, 0.3)",
         };
       }
 
       return {
-        backgroundColor: "rgba(255,255,255, 0.6)",
+        backgroundColor: "rgba(255,255,255, 0.7)",
         color: "#171717",
+        borderBottom: "rgba(237, 237, 237, 0.3)",
       };
     }
     return {
-      backgroundColor: "rgba(10,10,10,0.6)",
+      backgroundColor: "rgba(10,10,10,0.7)",
       color: "#ededed",
+      borderBottom: "rgba(28, 32, 36, 0.1)",
     };
   }, []);
 
