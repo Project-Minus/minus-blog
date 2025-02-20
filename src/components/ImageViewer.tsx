@@ -141,7 +141,7 @@ export default function ImageViewer({ url, closeViewer }: Props) {
         // flip 여부에 따른 보정치
         const sameBothScale = imageScale.X * imageScale.Y > 0 ? 1 : -1;
         const reverseSameBothScale = sameBothScale * -1;
-        console.log(sameBothScale, reverseSameBothScale);
+
         // 이동값 계산기
         const getTranslatePosition = (
           originAxis: Axis,
