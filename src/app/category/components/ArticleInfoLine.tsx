@@ -40,6 +40,7 @@ export default function ArticleInfoLine(props: Props) {
           즐겨찾기
         </button>
       </div>
+      <div className="infos_line" />
     </div>
   );
 }
