@@ -1,0 +1,41 @@
+@use "../styles/mixin.scss" as *;
+
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  .card_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    padding: 12px;
+    background-color: var(--boxground);
+  }
+  .card_title {
+    margin-bottom: 12px;
+    text-align: center;
+    @include ellipsisSingleLine();
+  }
+  .card_desc {
+    font-size: 14px;
+    @include ellipsisMultiLine();
+    -webkit-line-clamp: 4;
+  }
+  .card_date {
+    font-size: 12px;
+    text-align: right;
+  }
+  .card_category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    background-color: var(--opacityBox3);
+    font-weight: bold;
+    font-size: 32px;
+  }
+}

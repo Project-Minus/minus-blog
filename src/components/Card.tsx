@@ -7,9 +7,9 @@ import parse, {
   HTMLReactParserOptions,
 } from "html-react-parser";
 import { convertPContent } from "@/utils/convertTag";
-import Image from "next/image";
-import styles from "../styles/card.module.scss";
-import typescriptWhite from "../../public/card/typescriptWhite.svg";
+import "../styles/card.scss";
+import Link from "next/link";
+import CodeBox from "./CodeBox";
 
 interface Props {
   article: Article;
@@ -35,16 +35,35 @@ export default function Card({ article }: Props) {
 
     return domNode; // 변경하지 않을 경우 원래 태그 반환
   };
+
+  const getCategory = () => {
+    if (!article.category) {
+      return "Minus";
+    }
+
+    const categoryFirstChar = article.category[0];
+    const categoryRestChar = article.category.substring(1);
+    return categoryFirstChar.toUpperCase() + categoryRestChar;
+  };
   return (
-    <div className={styles.card}>
-      <Image src={typescriptWhite} alt="logo" />
-      <div>
-        <div className={styles.title}>{article.title}</div>
-        <div className={styles.desc}>
-          {parse(convertPContent(article.description), { replace: transform })}
-        </div>
-        <div className={styles.date}>{convertTime(article.created_at)}</div>
+    <CodeBox
+      dots={false}
+      title={getCategory()}
+      style={{ boxShadow: "0px 3px 30px rgba(0,0,0,0.2)" }}
+    >
+      <div className="card">
+        <Link href={`/category/${article.id}`}>
+          <div className="card_content">
+            <div className="card_title">{article.title}</div>
+            <div className="card_desc">
+              {parse(convertPContent(article.description), {
+                replace: transform,
+              })}
+            </div>
+            <div className="card_date">{convertTime(article.created_at)}</div>
+          </div>
+        </Link>
       </div>
-    </div>
+    </CodeBox>
   );
 }

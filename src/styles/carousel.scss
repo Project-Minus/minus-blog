@@ -1,6 +1,7 @@
 .carousel {
   max-width: 48rem;
   margin: auto;
+  padding: 8px;
   --slide-height: 19rem;
   --slide-spacing: 1rem;
   --slide-size: 33%;
@@ -47,7 +48,7 @@
   -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
   -webkit-appearance: none;
   appearance: none;
-  background-color: transparent;
+  background-color: var(--opacityFore7);
   touch-action: manipulation;
   display: inline-flex;
   text-decoration: none;
@@ -55,15 +56,17 @@
   border: 0;
   padding: 0;
   margin: 0;
-  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 1.6rem;
+  height: 1.6rem;
   z-index: 1;
   border-radius: 50%;
-  color: var(--text-body);
+  color: var(--background);
   display: flex;
   align-items: center;
   justify-content: center;
+  * {
+    color: var(--background);
+  }
 }
 .carousel__button:disabled {
   color: var(--detail-high-contrast);
@@ -77,6 +80,7 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
+  gap: 4px;
   margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
 }
 .carousel__dot {
@@ -91,8 +95,8 @@
   border: 0;
   padding: 0;
   margin: 0;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 1.6rem;
+  height: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,8 +114,8 @@
   border: 0;
   padding: 0;
   margin: 0;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 1.6rem;
+  height: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,6 +134,6 @@
   width: 1.4rem;
   height: 1.4rem;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 0.2rem var(--foreground);
+  box-shadow: inset 0 0 0 0.2rem var(--opacityFore8);
   content: "";
 }

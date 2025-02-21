@@ -22,7 +22,7 @@ export default async function Home() {
   await queryClient.prefetchQuery({
     queryKey: ["articleTable"],
     queryFn: () => getAllTable("article").catch(console.error),
-    staleTime: 60 * 1000, // 바로 stale 상태로 변경되는 것을 방지하기 위해 30초로 설정
+    staleTime: 5 * 60 * 1000, // 바로 stale 상태로 변경되는 것을 방지하기 위해 5분으으로 설정
   });
   const dehydratedState = dehydrate(queryClient);
 

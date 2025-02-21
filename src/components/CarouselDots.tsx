@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, useCallback, useEffect, useState } from "react";
 import { EmblaCarouselType } from "embla-carousel";
-import styles from "../styles/carousel.module.scss";
+import "../styles/carousel.scss";
 
 type UseDotButtonType = {
   selectedIndex: number;
@@ -53,10 +53,9 @@ type Props = ComponentPropsWithRef<"button">;
 
 export function DotButton(props: Props) {
   const { children, className, ...restProps } = props;
-  const newClassName = (className as string) ?? "";
 
   return (
-    <button type="button" className={styles[newClassName]} {...restProps}>
+    <button type="button" className={className} {...restProps}>
       {children}
     </button>
   );
