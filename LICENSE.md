@@ -59,10 +59,6 @@ This project includes third-party packages with the following licenses:
 - [@typescript-eslint/typescript-estree](https://github.com/typescript-eslint/typescript-eslint)
 - [eslint-scope](https://github.com/eslint/eslint-scope)
 
-## BSD-3-Clause License
-
-- [license-checker](https://github.com/davglass/license-checker)
-
 ## Apache-2.0 License
 
 - [eslint-visitor-keys](https://github.com/eslint/eslint-visitor-keys)
