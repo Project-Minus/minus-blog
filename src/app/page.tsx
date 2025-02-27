@@ -13,7 +13,7 @@ import styles from "./page.module.css";
 import Slider from "../components/Slider";
 import TypingModal from "../components/TypingModal";
 
-const headerFont = Aldrich({ subsets: ["latin"], weight: ["400"] });
+export const headerFont = Aldrich({ subsets: ["latin"], weight: ["400"] });
 
 export default async function Home() {
   const message = "Make the code concise";

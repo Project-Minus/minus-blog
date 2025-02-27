@@ -1,12 +1,23 @@
 @use "./mixin.scss" as *;
+
 .header {
   position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   top: 0;
   z-index: 100;
   width: 100%;
   height: 70px;
   padding: 15px 25px;
   color: red;
+
+  a {
+    color: var(--opacityFore3);
+    &.active {
+      color: var(--foreground);
+    }
+  }
 
   transition:
     backdrop-filter 0.3s,
@@ -17,6 +28,14 @@
     display: flex;
     align-items: center;
     max-width: 700px;
+  }
+  .others {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--foreground);
   }
   img {
     width: 100px;

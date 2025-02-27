@@ -2,11 +2,15 @@
 
 import Image from "next/image";
 import { CSSProperties, useEffect, useMemo, useState } from "react";
-import "../../styles/layout.scss";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import logo from "../../../public/minus.png";
+import { headerFont } from "../page";
+import "../../styles/layout.scss";
 
 export default function AppHeader() {
+  const location = usePathname();
+  const currentPath = location.split("/")[1];
   const [scroll, setScroll] = useState<CSSProperties>({});
   const colorScheme = useMemo(() => {
     if (typeof window !== "undefined") {
@@ -57,11 +61,32 @@ export default function AppHeader() {
       window.removeEventListener("scroll", onScroll);
     };
   }, [colorScheme]);
+
   return (
     <header className="header" style={scroll}>
       <div>
         <Link href="/">
           <Image src={logo} alt="" />
+        </Link>
+      </div>
+      <div className={`${headerFont.className} others`}>
+        <Link
+          className={`${currentPath === "about" ? "active" : ""}`}
+          href="/about"
+        >
+          About
+        </Link>
+        <Link
+          className={`${currentPath === "manual" ? "active" : ""}`}
+          href="/manual"
+        >
+          Manual
+        </Link>
+        <Link
+          className={`${currentPath === "connect" ? "active" : ""}`}
+          href="/connect"
+        >
+          Connect
         </Link>
       </div>
     </header>

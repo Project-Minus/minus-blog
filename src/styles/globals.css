@@ -1,14 +1,14 @@
 :root {
   --background: rgba(237, 237, 237, 1);
-  --opacityBack1 : rgba(237, 237, 237, 0.1);
-  --opacityBack2 : rgba(237, 237, 237, 0.2);
-  --opacityBack3 : rgba(237, 237, 237, 0.3);
-  --opacityBack4 : rgba(237, 237, 237, 0.4);
-  --opacityBack5 : rgba(237, 237, 237, 0.5);
-  --opacityBack6 : rgba(237, 237, 237, 0.6);
-  --opacityBack7 : rgba(237, 237, 237, 0.7);
-  --opacityBack8 : rgba(237, 237, 237, 0.8);
-  --opacityBack9 : rgba(237, 237, 237, 0.9);
+  --opacityBack1: rgba(237, 237, 237, 0.1);
+  --opacityBack2: rgba(237, 237, 237, 0.2);
+  --opacityBack3: rgba(237, 237, 237, 0.3);
+  --opacityBack4: rgba(237, 237, 237, 0.4);
+  --opacityBack5: rgba(237, 237, 237, 0.5);
+  --opacityBack6: rgba(237, 237, 237, 0.6);
+  --opacityBack7: rgba(237, 237, 237, 0.7);
+  --opacityBack8: rgba(237, 237, 237, 0.8);
+  --opacityBack9: rgba(237, 237, 237, 0.9);
   --boxground: rgba(40, 40, 40, 1);
   --opacityBox1: rgba(40, 40, 40, 0.1);
   --opacityBox2: rgba(40, 40, 40, 0.2);
@@ -49,7 +49,7 @@
   --opacitySub7: rgba(255, 85, 85, 0.7);
   --opacitySub8: rgba(255, 85, 85, 0.8);
   --opacitySub9: rgba(255, 85, 85, 0.9);
-  --tagColor: rgba(255, 137, 38,1);
+  --tagColor: rgba(255, 137, 38, 1);
   --opacityTag1: rgba(255, 137, 38, 0.1);
   --opacityTag2: rgba(255, 137, 38, 0.2);
   --opacityTag3: rgba(255, 137, 38, 0.3);
