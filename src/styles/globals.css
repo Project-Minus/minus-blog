@@ -1,14 +1,14 @@
 :root {
   --background: rgba(249, 249, 249, 1);
-  --opacityBack1: rgba(237, 237, 237, 0.1);
-  --opacityBack2: rgba(237, 237, 237, 0.2);
-  --opacityBack3: rgba(237, 237, 237, 0.3);
-  --opacityBack4: rgba(237, 237, 237, 0.4);
-  --opacityBack5: rgba(237, 237, 237, 0.5);
-  --opacityBack6: rgba(237, 237, 237, 0.6);
-  --opacityBack7: rgba(237, 237, 237, 0.7);
-  --opacityBack8: rgba(237, 237, 237, 0.8);
-  --opacityBack9: rgba(237, 237, 237, 0.9);
+  --opacityBack1: rgba(249, 249, 249, 0.1);
+  --opacityBack2: rgba(249, 249, 249, 0.2);
+  --opacityBack3: rgba(249, 249, 249, 0.3);
+  --opacityBack4: rgba(249, 249, 249, 0.4);
+  --opacityBack5: rgba(249, 249, 249, 0.5);
+  --opacityBack6: rgba(249, 249, 249, 0.6);
+  --opacityBack7: rgba(249, 249, 249, 0.7);
+  --opacityBack8: rgba(249, 249, 249, 0.8);
+  --opacityBack9: rgba(249, 249, 249, 0.9);
   --boxground: rgba(40, 40, 40, 1);
   --opacityBox1: rgba(40, 40, 40, 0.1);
   --opacityBox2: rgba(40, 40, 40, 0.2);
