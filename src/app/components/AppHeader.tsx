@@ -14,6 +14,7 @@ export default function AppHeader() {
   const currentPath = location.split("/")[1];
   const [theme, setTheme] = useState<"light" | "dark">();
   const [scrollStyle, setScrollStyle] = useState<CSSProperties>({});
+  const [logoStyle, setLogoStyle] = useState<CSSProperties>({});
   const colorScheme = useMemo(() => {
     if (typeof window !== "undefined") {
       const isDark = theme === "dark";
@@ -42,6 +43,15 @@ export default function AppHeader() {
     const htmlElement = document.documentElement;
 
     htmlElement.setAttribute("color-scheme", mode);
+    if (mode === "dark") {
+      setLogoStyle({
+        filter: `invert(99%) sepia(4%) saturate(45%) hue-rotate(244deg)
+          brightness(121%) contrast(100%)`,
+      });
+
+      return;
+    }
+    setLogoStyle({});
   };
 
   const toggleTheme = () => {
@@ -84,6 +94,7 @@ export default function AppHeader() {
       window.removeEventListener("scroll", onScroll);
     };
   }, [colorScheme]);
+
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
@@ -103,7 +114,7 @@ export default function AppHeader() {
     <header className="header" style={scrollStyle}>
       <div>
         <Link href="/">
-          <Image src={logo} alt="" />
+          <Image src={logo} style={logoStyle} alt="" />
         </Link>
       </div>
       <div className={`${headerFont.className} others`}>
