@@ -106,8 +106,9 @@ export default function ArticleDetail({ articleId }: Props) {
       }
 
       if (domNode.type === "tag" && domNode.name === "pre") {
-        const element = (domNode.childNodes[0] as Element)
-          .childNodes as Array<DOMNode>;
+        const element = (
+          domNode.childNodes?.find((child) => child.type === "tag") as Element
+        ).childNodes as Array<DOMNode>;
         const nodeInReact = domToReact(element);
         return (
           <code className="contents_code">
