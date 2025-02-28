@@ -41,16 +41,7 @@ export default function AppHeader() {
   const applyTheme = (mode: "light" | "dark") => {
     const htmlElement = document.documentElement;
 
-    if (mode === "dark") {
-      // OS 설정을 따른다.
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      htmlElement.setAttribute("color-scheme", prefersDark ? "dark" : "light");
-    } else {
-      // 사용자가 선택한 테마를 강제 적용
-      htmlElement.setAttribute("color-scheme", mode);
-    }
+    htmlElement.setAttribute("color-scheme", mode);
   };
 
   const toggleTheme = () => {
@@ -134,7 +125,12 @@ export default function AppHeader() {
         >
           Connect
         </Link>
-        <div onClick={toggleTheme}>
+        <div
+          onClick={toggleTheme}
+          onMouseDown={(e) => {
+            e.preventDefault();
+          }}
+        >
           {theme === "dark" ? <AiOutlineSun /> : <AiOutlineMoon />}
         </div>
       </div>
