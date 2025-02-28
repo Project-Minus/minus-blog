@@ -134,7 +134,12 @@ export default function AppHeader() {
         >
           Connect
         </Link>
-        <div onClick={toggleTheme}>
+        <div
+          onClick={toggleTheme}
+          onMouseDown={(e) => {
+            e.preventDefault();
+          }}
+        >
           {theme === "dark" ? <AiOutlineSun /> : <AiOutlineMoon />}
         </div>
       </div>
