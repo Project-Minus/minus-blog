@@ -4,7 +4,7 @@ import { headerFont } from "../page";
 export default function About() {
   return (
     <div className="other_page">
-      <div className={`${headerFont.className} title`}>About</div>
+      <div className={`${headerFont.className} title about_title`}>About</div>
       <div>
         <p>
           안녕하세요!

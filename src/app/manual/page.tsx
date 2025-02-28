@@ -4,7 +4,7 @@ import { headerFont } from "../page";
 export default function About() {
   return (
     <div className="other_page">
-      <div className={`${headerFont.className} title`}>Manual</div>
+      <div className={`${headerFont.className} title manual_title`}>Manual</div>
       <p>
         블로그를 더욱 편리하게 이용할 수 있도록 몇 가지 안내 사항을
         정리했습니다. 원활한 사용을 위해 참고해 주세요! 😊

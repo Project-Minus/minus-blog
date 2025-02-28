@@ -4,7 +4,9 @@ import { headerFont } from "../page";
 export default function Connect() {
   return (
     <div className="other_page">
-      <div className={`${headerFont.className} title`}>Connect</div>
+      <div className={`${headerFont.className} title connect_title`}>
+        Connect
+      </div>
       <p>연락 및 소통은 언제나 환영합니다!</p>
 
       <h2>📩 Email</h2>
