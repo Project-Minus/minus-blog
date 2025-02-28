@@ -1,5 +1,6 @@
 .other_page {
   .title {
+    user-select: none;
     text-align: center;
     position: relative;
     font-size: 120px;
@@ -18,17 +19,17 @@
     }
     &.about_title {
       &::before {
-        top: 91px;
+        top: 105px;
       }
     }
     &.manual_title {
       &::before {
-        top: 95px;
+        top: 105px;
       }
     }
     &.connect_title {
       &::before {
-        top: 105px;
+        top: 110px;
       }
     }
   }

@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import MainList from "@/widgets/MainList";
 import FloatingAside from "@/widgets/FloatingAside";
-import { Aldrich } from "next/font/google";
+import { Tektur } from "next/font/google";
 import FavoriteList from "@/components/FavoriteList";
 import {
   dehydrate,
@@ -13,7 +13,7 @@ import styles from "./page.module.css";
 import Slider from "../components/Slider";
 import TypingModal from "../components/TypingModal";
 
-export const headerFont = Aldrich({ subsets: ["latin"], weight: ["400"] });
+export const headerFont = Tektur({ subsets: ["latin"], weight: ["400"] });
 
 export default async function Home() {
   const message = "Make the code concise";
