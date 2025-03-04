@@ -224,7 +224,6 @@ export default function CommnetField(props: Props) {
           className="comment_button"
           type="button"
           onClick={handleSubmitComment}
-          style={{ fontSize: 16 }}
           disabled={totalComments > 9}
         >
           제출
