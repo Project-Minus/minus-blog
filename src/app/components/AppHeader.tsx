@@ -45,10 +45,8 @@ export default function AppHeader() {
     htmlElement.setAttribute("color-scheme", mode);
     if (mode === "dark") {
       setLogoStyle({
-        filter: `invert(99%) sepia(4%) saturate(45%) hue-rotate(244deg)
-          brightness(121%) contrast(100%)`,
+        filter: `invert(99%) sepia(4%) saturate(45%) hue-rotate(244deg) brightness(121%) contrast(100%)`,
       });
-
       return;
     }
     setLogoStyle({});
