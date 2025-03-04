@@ -22,9 +22,10 @@
     justify-content: space-between;
     padding: 4px 12px;
     border: 1px solid var(--opacityFore1);
-    background-color: var(--background);
-    font-size: 16px;
     border-radius: 20px;
+    background-color: var(--background);
+    color: inherit;
+    font-size: 16px;
     transition: border 0.3s;
     cursor: pointer;
     &:hover {
