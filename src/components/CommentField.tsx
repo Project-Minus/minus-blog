@@ -158,7 +158,7 @@ export default function CommnetField(props: Props) {
             onClick={() => {
               copyToClipboard();
             }}
-            style={{ width: 120 }}
+            style={{ width: 128 }}
           >
             글 공유하기 <AiOutlineUpload />
           </button>
