@@ -1,5 +1,5 @@
 import { CSSProperties, ReactNode } from "react";
-import styles from "../styles/codeBox.module.scss";
+import "../styles/codeBox.scss";
 
 interface Props {
   dots: boolean;
@@ -10,10 +10,10 @@ interface Props {
 
 export default function CodeBox({ title = "", dots, children, style }: Props) {
   return (
-    <div className={styles.code} style={style}>
+    <div className="code" style={style}>
       {dots ? (
-        <header className={styles.codeHeader}>
-          <div className={styles.dots}>
+        <header className="codeHeader">
+          <div className="dots">
             <div
               style={{
                 width: 10,
@@ -53,7 +53,7 @@ export default function CodeBox({ title = "", dots, children, style }: Props) {
           </svg>
         </header>
       ) : (
-        <header className={styles.noDots}>
+        <header className="noDots">
           <svg
             width="16"
             height="16"
@@ -81,7 +81,7 @@ export default function CodeBox({ title = "", dots, children, style }: Props) {
           </svg>
         </header>
       )}
-      <div className={styles.codeContent}>{children}</div>
+      <div className="codeContent">{children}</div>
     </div>
   );
 }
