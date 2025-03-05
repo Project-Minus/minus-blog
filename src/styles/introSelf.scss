@@ -11,8 +11,11 @@
     border-radius: 56px;
   }
   p {
-    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     text-align: right;
+    font-size: 1.5rem;
     line-height: 1.6;
   }
   .copy_button {
@@ -25,7 +28,7 @@
     border-radius: 20px;
     background-color: var(--background);
     color: inherit;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: border 0.3s;
     cursor: pointer;
     &:hover {

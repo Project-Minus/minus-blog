@@ -9,7 +9,7 @@ export default function IframeInfo({ hasIframe = false }: Props) {
   }
   return (
     <div className="iframeInfo">
-      ※ 해당 페이지는 Component Story가 포함되어 있습니다.
+      ※ 해당 글은 Component Story가 포함되어 있습니다.
       <br />
       PC 전체화면으로 보시기를 권장 드립니다.
       <br />

@@ -28,7 +28,7 @@ export default function IntroSelf() {
           onClick={() => {
             copyToClipboard();
           }}
-          style={{ width: 90 }}
+          style={{ width: 95 }}
         >
           글 공유하기 <AiOutlineUpload />
         </button>
