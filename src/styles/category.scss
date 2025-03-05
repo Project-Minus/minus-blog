@@ -43,9 +43,10 @@
     word-break: keep-all;
   }
   .favorite {
+    color: inherit;
     font-size: 0.9rem;
     font-weight: 700;
-    padding: 8px 12px;
+    padding: 4px 8px 5px;
     border: 2px solid var(--pointColor);
     border-radius: 30px;
     background-color: var(--pointColor);
@@ -55,7 +56,7 @@
   .unFavorite {
     font-size: 0.9rem;
     font-weight: 700;
-    padding: 8px 12px;
+    padding: 4px 8px 5px;
     border: 2px solid var(--pointColor);
     color: var(--pointColor);
     border-radius: 30px;

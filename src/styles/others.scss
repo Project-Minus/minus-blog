@@ -23,24 +23,33 @@
     &.about_title {
       &::before {
         top: 120px;
-        @media screen and (max-width: 700px) {
-          top: 75px;
+      }
+      @media screen and (max-width: 700px) {
+        font-size: 6.5rem;
+        &::before {
+          top: 70px;
         }
       }
     }
     &.manual_title {
       &::before {
         top: 123px;
-        @media screen and (max-width: 700px) {
-          top: 78px;
+      }
+      @media screen and (max-width: 700px) {
+        font-size: 6.5rem;
+        &::before {
+          top: 72px;
         }
       }
     }
     &.connect_title {
       &::before {
         top: 133px;
-        @media screen and (max-width: 700px) {
-          top: 84px;
+      }
+      @media screen and (max-width: 700px) {
+        font-size: 6.2rem;
+        &::before {
+          top: 74px;
         }
       }
     }
