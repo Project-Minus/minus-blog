@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import MainList from "@/widgets/MainList";
 import FloatingAside from "@/widgets/FloatingAside";
 import { Tektur } from "next/font/google";

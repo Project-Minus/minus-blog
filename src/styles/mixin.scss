@@ -57,63 +57,8 @@
 @mixin toastZIndex {
   z-index: 1100;
 }
-@mixin cardNavZIndex {
-  z-index: 100;
-}
-@mixin productCardImageZIndex {
-  z-index: 1;
-}
-@mixin productCardBadgeZIndex {
-  z-index: 2;
-}
-@mixin defaultHeaderZIndex {
-  z-index: 1000;
-}
-@mixin productDetailModalZIndex {
-  z-index: 10;
-}
-
-@mixin deviceSpecPageZIndex {
-  z-index: 1;
-}
-
-@mixin deviceSpecTapsZIndex {
-  z-index: 1;
-}
-
-@mixin deviceTitleZIndex {
-  z-index: 1;
-}
-
-@mixin accessoryZoomImageZIndex {
-  z-index: 1;
-}
-
-@mixin accessoryBackgroundZIndex {
-  z-index: -1;
-}
-
-@mixin accessoryPopOverZIndex {
-  z-index: 1;
-}
-
-@mixin fovTitleZIndex {
-  z-index: 1;
-}
-
-@mixin modalBackgroundZIndex {
-  z-index: 1001;
-}
-
-@mixin listTableHighlightLineZIndex {
-  z-index: 1;
-}
-
-@mixin googleAutoCompleteZIndex {
-  z-index: 1051;
-}
-@mixin imageMapZIndex {
-  z-index: 1000;
+@mixin asidZIndex {
+  z-index: 100000;
 }
 
 // ---

@@ -3,7 +3,7 @@
 import { useGetTable } from "@/api/useGetTable";
 import CodeBox from "@/components/CodeBox";
 import { useSidebarStore } from "@/store/sidebarStore";
-import styles from "@/styles/flotingAside.module.scss";
+import "@/styles/flotingAside.scss";
 import { Category } from "@/type/tableType";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 
@@ -14,21 +14,21 @@ export default function FloatingAside() {
   const { category, setCategory, setSearch } = useSidebarStore();
 
   return (
-    <div className={styles.aside}>
+    <div className="aside">
       <CodeBox dots>
-        <div className={styles.asideList}>
+        <div className="asideList">
           {asideData?.map((aside, index) => {
             const key = `${aside.name}-${index}`;
             return (
-              <div className={styles.asideItem} key={key}>
-                <p className={styles.asideTitle}>{` ${aside.name} `}</p>
-                <div className={styles.asideBox}>
+              <div className="asideItem" key={key}>
+                <p className="asideTitle">{` ${aside.name} `}</p>
+                <div className="asideBox">
                   {aside.sub_category?.map((subCategory, subIndex) => {
                     const subKey = `${key}-${subIndex}`;
                     const itemStyle =
                       category !== subCategory
-                        ? styles.asideItem
-                        : styles.asideItemActive;
+                        ? "asideItem"
+                        : "asideItemActive";
                     return (
                       <p
                         className={itemStyle}
@@ -52,7 +52,7 @@ export default function FloatingAside() {
         </div>
       </CodeBox>
       <CodeBox dots style={{ marginTop: 15 }}>
-        <div className={styles.asideSearch}>
+        <div className="asideSearch">
           <input
             type="text"
             placeholder="console.log(title)"
