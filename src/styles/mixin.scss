@@ -50,7 +50,9 @@
 @mixin modalZIndex {
   z-index: 1050;
 }
-
+@mixin modalBackgroundZIndex {
+  z-index: 1001;
+}
 @mixin spinnerZIndex {
   z-index: 10000000;
 }
