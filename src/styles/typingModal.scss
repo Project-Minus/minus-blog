@@ -101,6 +101,16 @@
                   forwards,
                 cursor-remain 1s linear string.unquote((($i - 1) * 1) + "s") 1;
             }
+            @media screen and (max-width: 700px) {
+              &-#{$i} {
+                animation:
+                  m-typing-#{$i} 1s string.unquote((($i - 1) * 1) + "s") steps(
+                      20,
+                      end
+                    ) forwards,
+                  cursor-remain 1s linear string.unquote((($i - 1) * 1) + "s") 1;
+              }
+            }
           }
           &-1,
           &-3,
@@ -214,6 +224,79 @@
   }
   to {
     width: 20px;
+  }
+}
+
+@keyframes m-typing-1 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(60px * 0.64);
+  }
+}
+@keyframes m-typing-2 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(150px * 0.64);
+  }
+}
+@keyframes m-typing-3 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(50px * 0.64);
+  }
+}
+@keyframes m-typing-4 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(45px * 0.64);
+  }
+}
+@keyframes m-typing-5 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(90px * 0.64);
+  }
+}
+@keyframes m-typing-6 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(100px * 0.64);
+  }
+}
+@keyframes m-typing-7 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(90px * 0.64);
+  }
+}
+@keyframes m-typing-8 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(90px * 0.64);
+  }
+}
+@keyframes m-typing-9 {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(20px * 0.64);
   }
 }
 
