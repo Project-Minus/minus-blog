@@ -126,8 +126,10 @@ export default function ImageViewer({ url, closeViewer }: Props) {
 
   useEffect(() => {
     if (isMouseHold) {
-      const handlePointerMove = (e: PointerEvent) => {
-        const { clientX, clientY } = e;
+      const handlePointerMove = (e: PointerEvent | TouchEvent) => {
+        // const { clientX, clientY } = e;
+        const clientX = "clientX" in e ? e.clientX : e.touches[0].clientX;
+        const clientY = "clientY" in e ? e.clientY : e.touches[0].clientY;
         // console.log(imageContentRef.current?.clientWidth);
         const deltaX = clientX - imageStartPoint.X;
         const deltaY = clientY - imageStartPoint.Y;
@@ -238,8 +240,8 @@ export default function ImageViewer({ url, closeViewer }: Props) {
           handleImageTranslate("X", translateX);
           handleImageTranslate("Y", translateY);
 
-          handleImageStartPoint("X", e.clientX);
-          handleImageStartPoint("Y", e.clientY);
+          handleImageStartPoint("X", clientX);
+          handleImageStartPoint("Y", clientY);
         });
       };
 
@@ -247,14 +249,20 @@ export default function ImageViewer({ url, closeViewer }: Props) {
         setIsMouseHold(false);
         document.removeEventListener("pointermove", handlePointerMove);
         document.removeEventListener("pointerup", handlePointerUp);
+        document.removeEventListener("touchmove", handlePointerMove);
+        document.removeEventListener("touchend", handlePointerUp);
       };
 
       document.addEventListener("pointermove", handlePointerMove);
       document.addEventListener("pointerup", handlePointerUp);
+      document.addEventListener("touchmove", handlePointerMove);
+      document.addEventListener("touchend", handlePointerUp);
 
       return () => {
         document.removeEventListener("pointermove", handlePointerMove);
         document.removeEventListener("pointerup", handlePointerUp);
+        document.removeEventListener("touchmove", handlePointerMove);
+        document.removeEventListener("touchend", handlePointerUp);
       };
     }
   }, [
@@ -279,7 +287,13 @@ export default function ImageViewer({ url, closeViewer }: Props) {
           }}
           className="viewerContent"
           style={{
-            transform: `rotateZ(${rotateLeftAndRight * 90}deg) scale3d(${imageScale.X},${imageScale.Y},${imageScale.Z}) translate3d(${imageTranslate.X}px,${imageTranslate.Y}px,${imageTranslate.Z}px)`,
+            transform: `translate3d(${imageTranslate.X}px, ${imageTranslate.Y}px, ${imageTranslate.Z}px)`,
+            // rotate에 transition 적용
+            rotate: `z ${rotateLeftAndRight * 90}deg`,
+            // scale에 transition 적용
+            scale: `${imageScale.X} ${imageScale.Y} ${imageScale.Z}`,
+            transition:
+              "scale 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0s, rotate 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0s, transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1) 0s",
           }}
         >
           <Image
@@ -290,6 +304,14 @@ export default function ImageViewer({ url, closeViewer }: Props) {
             style={{
               objectFit: "contain",
               cursor: isMouseHold ? "grabbing" : "grab",
+            }}
+            onTouchStart={(e) => {
+              handleImageStartPoint("X", e.touches[0].clientX);
+              handleImageStartPoint("Y", e.touches[0].clientY);
+              setIsMouseHold(true);
+            }}
+            onTouchEnd={() => {
+              setIsMouseHold(false);
             }}
             onMouseDown={(e) => {
               handleImageStartPoint("X", e.clientX);

@@ -5,6 +5,9 @@
   --slide-height: 19rem;
   --slide-spacing: 1rem;
   --slide-size: 33%;
+  @media screen and (max-width: 700px) {
+    --slide-size: 100%;
+  }
 }
 .carousel__viewport {
   overflow: hidden;

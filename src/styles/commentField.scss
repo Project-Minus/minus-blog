@@ -12,7 +12,7 @@
   .comment_reset {
     margin: 0 0 10px auto;
     width: 50px;
-    font-size: 12px;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
   }
@@ -25,7 +25,7 @@
     border-radius: 20px;
     background-color: var(--background);
     color: inherit;
-    font-size: 16px;
+    font-size: 1rem;
     transition: border 0.3s;
     cursor: pointer;
     &:hover {
@@ -57,7 +57,7 @@
       height: 48px;
       background-color: var(--foreground);
       border-radius: 30px;
-      font-size: 30px;
+      font-size: 2.2rem;
     }
   }
   .input_wrapper {
@@ -92,7 +92,7 @@
       padding: 4px 12px;
       border: none;
       background-color: var(--background);
-      font-size: 20px;
+      font-size: 1.5rem;
       border-radius: 20px;
       cursor: pointer;
       &.locked {

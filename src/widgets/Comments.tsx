@@ -1,6 +1,7 @@
 import { useGetCommentByArticleId } from "@/api/useGetTable";
 import CommnetField from "@/components/CommentField";
 import CommentList from "@/components/CommentList";
+import "@/styles/comments.scss";
 
 interface Props {
   articleId: string;
@@ -8,7 +9,7 @@ interface Props {
 export default function Comments({ articleId }: Props) {
   const { data } = useGetCommentByArticleId(articleId);
   return (
-    <div>
+    <div className="comments">
       <CommnetField articleId={articleId} totalComments={data?.length} />
       <CommentList articleId={articleId} data={data} />
     </div>

@@ -12,6 +12,7 @@
   padding: 15px 25px;
 
   a {
+    font-size: 1.4rem;
     color: var(--opacityFore3);
     &.active {
       color: var(--foreground);
@@ -33,12 +34,15 @@
     align-items: center;
     gap: 16px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 1.8rem;
     color: var(--foreground);
   }
   img {
     width: 100px;
     height: auto;
+    @media screen and (max-width: 700px) {
+      width: 56px;
+    }
   }
   > div {
     max-width: 700px;

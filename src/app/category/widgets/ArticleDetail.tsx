@@ -34,6 +34,7 @@ import "@/styles/category.scss";
 import Comments from "@/widgets/Comments";
 import IframeInfo from "@category/components/IframeInfo";
 import ArticleInfoLine from "@category/components/ArticleInfoLine";
+import IntroSelf from "@/widgets/introSelf";
 
 interface Props {
   articleId: string;
@@ -229,6 +230,7 @@ export default function ArticleDetail({ articleId }: Props) {
           })}
       </div>
       <Comments articleId={articleId} />
+      <IntroSelf />
       {hasIframe && (
         <>
           <FloatDial items={dialItems} currentType={iframeType} />

@@ -1,6 +1,9 @@
 @use "./mixin.scss" as *;
 .mainBox {
   width: 70%;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
 }
 .mainLink {
   display: flex;
@@ -13,21 +16,21 @@
 }
 
 .mainTitle {
-  font-size: 26px;
+  font-size: 1.8rem;
   font-weight: bold;
   @include ellipsisSingleLine;
 }
 .mainDesc {
   width: 100%;
   margin: 10px 0;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 2;
   color: var(--opacityFore7);
   @include ellipsisMultiLine();
   -webkit-line-clamp: 4;
 }
 .mainTime {
-  font-size: 12px;
+  font-size: 0.9rem;
   text-align: right;
 }
 .mainEmpty {
@@ -35,6 +38,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 1.3rem;
   line-height: 1.5;
 }

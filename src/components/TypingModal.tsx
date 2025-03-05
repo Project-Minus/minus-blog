@@ -1,12 +1,12 @@
-import styles from "../styles/typingModal.module.scss";
+import "../styles/typingModal.scss";
 
 export default function TypingModal() {
   const annotaion = "// It's a Joke";
   const rectClass = '"rect"';
   return (
-    <div className={styles["illustration-editor"]}>
-      <div className={styles["code-blocks"]}>
-        <div className={`${styles.code} ${styles["code-html"]}`}>
+    <div className="illustration-editor">
+      <div className="typing-code-blocks">
+        <div className="code code-html">
           <header>
             <svg
               width="16"
@@ -34,17 +34,17 @@ export default function TypingModal() {
               />
             </svg>
           </header>
-          <div className={styles["code-content"]}>
+          <div className="code-content">
             <code>
-              <span className={styles["c-r"]}>&lt;div</span>{" "}
+              <span className="c-r">&lt;div</span>{" "}
               <span className="c-y">className</span>
               <span className="c-w">=</span>
               <span className="c-g">{rectClass}</span>
-              <span className={styles["c-r"]}>&gt;&lt;/div&gt;</span>
+              <span className="c-r">&gt;&lt;/div&gt;</span>
             </code>
           </div>
         </div>
-        <div className={`${styles.code} ${styles["code-css"]}`}>
+        <div className="code code-css">
           <header>
             <svg
               width="16"
@@ -72,55 +72,54 @@ export default function TypingModal() {
               />
             </svg>
           </header>
-          <div className={styles["code-content"]}>
+          <div className="code-content">
             <code>
-              <p className={styles["line-1"]}>
-                <span className={styles["c-y"]}>.minus</span> <span />
+              <p className="line-1">
+                <span className="c-y">.minus</span> <span />
                 <span>{"{"}</span>
               </p>
               <br />
-              <p className={styles["line-2"]}>
-                <span className={styles["c-p"]}>job</span>
-                <span>:</span>{" "}
-                <span className={styles["c-y"]}>F/E developer</span>({" "}
+              <p className="line-2">
+                <span className="c-p">job</span>
+                <span>:</span> <span className="c-y">F/E developer</span>({" "}
               </p>
               <br />
-              <p className={styles["line-3"]}>
-                <span className={styles["c-o"]}>react</span>,
+              <p className="line-3">
+                <span className="c-o">react</span>,
               </p>
               <br />
-              <p className={styles["line-4"]}>
-                <span className={styles["c-o"]}>next</span>
+              <p className="line-4">
+                <span className="c-o">next</span>
                 {", "}
               </p>
               <br />
-              <p className={styles["line-5"]}>
-                <span className={styles["c-o"]}>typescript</span>
+              <p className="line-5">
+                <span className="c-o">typescript</span>
                 {", "}
               </p>
               <br />
-              <p className={styles["line-6"]}>
-                <span className={styles["c-o"]}>react-native</span>
+              <p className="line-6">
+                <span className="c-o">react-native</span>
                 {", "}
               </p>
               <br />
-              <p className={styles["line-7"]}>
-                <span className={styles["c-o"]}>react-query</span>
+              <p className="line-7">
+                <span className="c-o">react-query</span>
                 {", "}
               </p>
               <br />
-              <p className={styles["line-8"]}>
-                <span className={styles["c-o"]}>aws, ...etc</span>
+              <p className="line-8">
+                <span className="c-o">aws, ...etc</span>
                 <span>)</span>;
               </p>
               <br />
-              <p className={styles["line-9"]}>
+              <p className="line-9">
                 <span>{"}"}</span>
               </p>
             </code>
           </div>
         </div>
-        <div className={`${styles.code} ${styles["code-js"]}`}>
+        <div className="code code-js">
           <header>
             <svg
               width="16"
@@ -148,28 +147,28 @@ export default function TypingModal() {
               />
             </svg>
           </header>
-          <div className={styles["code-content"]}>
+          <div className="code-content">
             <code>
-              <span className={styles["c-y"]}>const</span>{" "}
-              <span className={styles["c-b"]}>Pros</span> = [
+              <span className="c-y">const</span>{" "}
+              <span className="c-b">Pros</span> = [
               <br />
-              <span className={styles["c-g"]}>“Communication”</span>, <br />
-              <span className={styles["c-g"]}>“Efficient”</span>, <br />
-              <span className={styles["c-g"]}>“Logical”</span>, <br />
-              <span className={styles["c-g"]}>“...etc”</span>
+              <span className="c-g">“Communication”</span>, <br />
+              <span className="c-g">“Efficient”</span>, <br />
+              <span className="c-g">“Logical”</span>, <br />
+              <span className="c-g">“...etc”</span>
               <br />
               ];
               <br />
               <br />
-              <span className={styles["c-c"]}>{annotaion}</span>
+              <span className="c-c">{annotaion}</span>
               <br />
-              <span className={styles["c-y"]}>const</span>{" "}
-              <span className={styles["c-b"]}>Cons</span> = [
-              <span className={styles["c-b"]}>null</span>];
+              <span className="c-y">const</span>{" "}
+              <span className="c-b">Cons</span> = [
+              <span className="c-b">null</span>];
               <br />
               <br />
-              <span className={styles["c-y"]}>function</span>{" "}
-              <span className={styles["c-b"]}>lookAroundMinus</span>() {}
+              <span className="c-y">function</span>{" "}
+              <span className="c-b">lookAroundMinus</span>() {}
             </code>
           </div>
         </div>

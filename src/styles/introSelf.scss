@@ -1,0 +1,38 @@
+.intro_self {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 2px solid var(--opacityFore1);
+  img {
+    width: 70px;
+    height: 70px;
+    border-radius: 56px;
+  }
+  p {
+    font-size: 1.5rem;
+    text-align: right;
+    line-height: 1.6;
+  }
+  .copy_button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 4px 12px 6px;
+    border: 1px solid var(--opacityFore1);
+    border-radius: 20px;
+    background-color: var(--background);
+    color: inherit;
+    font-size: 1rem;
+    transition: border 0.3s;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid var(--opacityFore5);
+    }
+  }
+  @media screen and (min-width: 701px) {
+    display: none;
+  }
+}

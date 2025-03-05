@@ -1,6 +1,7 @@
 import { IFRAME_TYPE } from "@/constants/iframeConstants";
 import Spinner from "@/widgets/Spinner";
 import { useRef, useState } from "react";
+import "@/styles/category.scss";
 
 export default function IframeWithLoading({
   src,
@@ -15,12 +16,7 @@ export default function IframeWithLoading({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const isIframeInDocs = iframeType === IFRAME_TYPE.inDocs;
   return (
-    <div
-      style={{
-        position: "relative",
-        height: "650px",
-      }}
-    >
+    <div className="iframe_container">
       {loading && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Spinner size="large" />

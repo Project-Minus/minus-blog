@@ -3,7 +3,7 @@
 import { AiFillContainer } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { DialItemType } from "@/type/dial";
-import styles from "../styles/floatDial.module.scss";
+import "../styles/floatDial.scss";
 
 interface Props {
   items: Array<DialItemType>;
@@ -27,19 +27,19 @@ export default function FloatDial({ items, currentType }: Props) {
 
   return (
     <div
-      className={styles.floatDial}
+      className="floatDial"
       style={{ width: 120 }}
       onMouseEnter={() => setHovered("hovered")}
       onMouseLeave={() => setHovered("unHovered")}
     >
-      <div className={styles.floatDialList}>
+      <div className="floatDialList">
         {items.map(({ name, icon, onClick }, index) => {
           const key = `${name}_${index}`;
           const isSelected = currentType === name ? "selected" : "";
           return (
             <div
               id="dial-item"
-              className={`${styles.floatDialItem} ${styles[hovered]} ${styles[isSelected]}`}
+              className={`floatDialItem ${hovered} ${isSelected}`}
               key={key}
               data-content={name}
               onClick={onClick}
@@ -49,7 +49,7 @@ export default function FloatDial({ items, currentType }: Props) {
           );
         })}
       </div>
-      <div className={`${styles.floatDialButton} ${styles[hovered]}`}>
+      <div className={`floatDialButton ${hovered}`}>
         <AiFillContainer size={28} />
       </div>
     </div>

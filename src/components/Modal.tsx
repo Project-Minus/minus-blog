@@ -85,15 +85,15 @@ export default function Modal(props: Props) {
   const getFontSize = () => {
     switch (size) {
       case "small":
-        return 20;
+        return "1.4rem";
       case "mid":
-        return 24;
+        return "1.8rem";
       case "large":
-        return 24;
+        return "1.8rem";
       case "dynamic":
-        return 24;
+        return "1.8rem";
       default:
-        return 20;
+        return "1.4rem";
     }
   };
 
