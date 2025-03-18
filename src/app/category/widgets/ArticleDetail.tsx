@@ -30,11 +30,11 @@ import ReactCodeBlock from "@/components/ReactCodeBlock";
 import FloatDial from "@/components/FloatDial";
 import ScrollSpy from "@category/components/ScrollSpy";
 import IframeWithLoading from "@category/components/IframeWithLoading";
-import "@/styles/category.scss";
 import Comments from "@/widgets/Comments";
 import IframeInfo from "@category/components/IframeInfo";
 import ArticleInfoLine from "@category/components/ArticleInfoLine";
 import IntroSelf from "@/widgets/introSelf";
+import "@/styles/category.scss";
 
 interface Props {
   articleId: string;
