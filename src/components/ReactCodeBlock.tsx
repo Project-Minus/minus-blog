@@ -5,7 +5,7 @@ export default function ReactCodeBlock(props: CopyBlockProps) {
   const {
     text,
     language = "typescript",
-    showLineNumbers = true,
+    showLineNumbers = false,
     startingLineNumber = 1,
   } = props;
   const copyBlockProps = {
