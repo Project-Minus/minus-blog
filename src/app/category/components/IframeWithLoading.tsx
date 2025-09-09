@@ -15,9 +15,10 @@ export default function IframeWithLoading({
   const [loading, setLoading] = useState(true);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const isIframeInDocs = iframeType === IFRAME_TYPE.inDocs;
+
   return (
-    <div className="iframe_container" style={{ height: 750 }}>
-      {loading && (
+    <div className="iframe_container">
+      {loading && window.innerWidth > 700 && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Spinner size="large" />
         </div>
